@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Dhig Labs</title>
+  <meta name="description" content="Evaluation infrastructure for Somali: safety and toxicity test sets, translation and comprehension benchmarks, and red-teaming methods for low-resource languages.">
+  <link rel="canonical" href="https://dhiglabs.org/research.html">
+  <meta property="og:title" content="Research — Dhig Labs">
+  <meta property="og:description" content="Safety test sets, benchmarks, and red-teaming methodology for Somali and other low-resource languages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dhiglabs.org/research.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Dhig Labs</a>
+      <nav aria-label="Main">
+        <button class="menu-toggle" hidden aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <ul id="site-nav" class="nav-list">
+          <li><a href="/research.html" aria-current="page">Research</a></li>
+          <li><a href="/platform.html">Platform</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" hidden aria-label="Toggle color theme">Dark</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+
+      <h1>Research</h1>
+
+      <p>Our research agenda is evaluation infrastructure for Somali. We build safety and toxicity test sets, translation and comprehension benchmarks, and red-teaming methods designed for low-resource languages. The goal is simple: frontier labs and deployers should be able to measure how their systems perform in Somali, and improve them. Today they cannot. We intend to make that measurement routine.</p>
+
+      <span class="eyebrow">Publications</span>
+      <p class="empty-state">Our first benchmark paper is in preparation (2026).</p>
+
+      <!-- Future publications go in this list. Each entry follows this shape:
+
+      <ul class="dated-list">
+        <li>
+          <time datetime="2026-01-01">Jan 2026</time>
+          <p class="title">Paper title here</p>
+          <p class="muted">Venue or preprint server</p>
+          <p><a href="#">PDF</a> · <a href="#">Code</a> · <a href="#">Data</a></p>
+        </li>
+      </ul>
+      -->
+
+      <span class="eyebrow">Research principles</span>
+      <ul>
+        <li><strong>Open release by default.</strong> Datasets, benchmarks, and papers are published under open licenses unless there is a specific safety reason not to.</li>
+        <li><strong>Human data dignity.</strong> Contributors are credited and consented. Nobody's words enter a dataset without their knowledge.</li>
+        <li><strong>Dialect inclusion.</strong> Somali is not one uniform language. Our benchmarks and datasets cover Maxaa tiri and Maay<!-- VERIFY SOMALI: dialect names --> from the start, not as an afterthought.</li>
+        <li><strong>Safety evaluation before capability hype.</strong> We measure whether systems are safe and accurate in Somali before we celebrate that they speak it at all.</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Dhig Labs · Mogadishu, Somalia</p>
+      <p>
+        <a href="https://github.com/dhiglabs">GitHub</a> ·
+        <a href="https://huggingface.co/dhiglabs">Hugging Face</a> ·
+        <a href="mailto:info@dhiglabs.org">Email</a>
+      </p>
+      <p class="flourish" lang="so">Ereyada waa hanti.</p><!-- VERIFY SOMALI: "words are wealth" — confirm with founders before launch -->
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

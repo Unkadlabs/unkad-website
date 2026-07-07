@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Dhig Platform — Dhig Labs</title>
+  <meta name="description" content="An open platform where Somali speakers write, record, and validate language data across sectors and dialects. Model-assisted, human-verified, openly licensed.">
+  <link rel="canonical" href="https://dhiglabs.org/platform.html">
+  <meta property="og:title" content="The Dhig Platform — Dhig Labs">
+  <meta property="og:description" content="Community-built Somali language data: model-assisted, human-verified, released under open licenses.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dhiglabs.org/platform.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Dhig Labs</a>
+      <nav aria-label="Main">
+        <button class="menu-toggle" hidden aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <ul id="site-nav" class="nav-list">
+          <li><a href="/research.html">Research</a></li>
+          <li><a href="/platform.html" aria-current="page">Platform</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" hidden aria-label="Toggle color theme">Dark</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+
+      <h1>The Dhig Platform</h1>
+
+      <p>The Dhig Platform is our flagship project: an open platform where Somali speakers write, record, and validate language data. Contribution is organized by sector — health, education, agriculture, law, media, religion — and by dialect, covering both Maxaa tiri and Maay<!-- VERIFY SOMALI: dialect names -->.</p>
+
+      <p>Data creation is model-assisted and human-verified. Models draft and suggest; Somali speakers correct, validate, and approve. Nothing enters a released dataset without human verification, and every contributor is credited and consented.</p>
+
+      <p>All data is released under open licenses — CC&nbsp;BY or CC&nbsp;BY-SA — so that researchers, developers, and the Somali community itself can build on it without restriction.</p>
+
+      <span class="eyebrow">Year-one pilot goals</span>
+      <ul>
+        <li>Pilot the platform in one or two sectors.</li>
+        <li>Reach 500+ active contributors.</li>
+        <li>Release the first open dataset on Hugging Face.</li>
+      </ul>
+
+      <hr>
+
+      <p><strong>Want to contribute Somali text or speech, or partner with us?</strong> → <a href="/contact.html">Contact</a></p>
+
+      <!-- Email signup placeholder.
+           To wire this up later, replace the action attribute with either:
+           - Formspree:   action="https://formspree.io/f/YOUR_FORM_ID" method="post"
+           - Buttondown:  action="https://buttondown.com/api/emails/embed-subscribe/YOUR_NEWSLETTER" method="post"
+           No other changes needed. -->
+      <form class="signup" action="#" method="post">
+        <label for="email">Get an email when the platform opens for contributors.</label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+        <button type="submit">Notify me</button>
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Dhig Labs · Mogadishu, Somalia</p>
+      <p>
+        <a href="https://github.com/dhiglabs">GitHub</a> ·
+        <a href="https://huggingface.co/dhiglabs">Hugging Face</a> ·
+        <a href="mailto:info@dhiglabs.org">Email</a>
+      </p>
+      <p class="flourish" lang="so">Ereyada waa hanti.</p><!-- VERIFY SOMALI: "words are wealth" — confirm with founders before launch -->
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

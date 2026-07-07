@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ============================================================
+       POST TEMPLATE — to add a new post:
+       1. Copy this file to /blog/your-post-slug.html
+       2. Update: <title>, meta description, canonical + og:url,
+          og:title/og:description, the <h1>, the <time> element,
+          and the body of the <article>.
+       3. Add one <li> entry to the top of the list in /blog/index.html
+          and one <url> entry to /sitemap.xml.
+       ============================================================ -->
+
+  <title>Dhig Labs: write it down — Dhig Labs</title>
+  <meta name="description" content="Why we started a non-profit AI research lab in Mogadishu, what the name Dhig means, and how to take part.">
+  <link rel="canonical" href="https://dhiglabs.org/blog/hello-world.html">
+  <meta property="og:title" content="Dhig Labs: write it down">
+  <meta property="og:description" content="Why we started a non-profit AI research lab in Mogadishu, what the name Dhig means, and how to take part.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dhiglabs.org/blog/hello-world.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">Dhig Labs</a>
+      <nav aria-label="Main">
+        <button class="menu-toggle" hidden aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <ul id="site-nav" class="nav-list">
+          <li><a href="/research.html">Research</a></li>
+          <li><a href="/platform.html">Platform</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" hidden aria-label="Toggle color theme">Dark</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <article>
+
+        <p class="back-link"><a href="/blog/">← All posts</a></p>
+
+        <h1>Dhig Labs: write it down</h1>
+        <p class="post-meta"><time datetime="2026-07-07">July 7, 2026</time> · Dhig Labs</p>
+
+        <p>In Somali, <em lang="so">dhig</em> means &ldquo;write it down.&rdquo;<!-- VERIFY SOMALI --> It is a fitting name for what we are trying to do. Somali carries one of the world&rsquo;s great oral traditions — centuries of poetry, law, and memory passed from voice to voice — and it has only had a standard written form since 1972. Much of the language has simply never been written down. Now a new kind of machine is learning to read, and it can only learn from what is on the page.</p>
+
+        <p>That is the problem. Somali is spoken by more than 20 million people, but the text available to train AI systems is scarce, noisy, and narrow. Dialects such as Maay are nearly invisible in it. As a result, the systems that are becoming the front door to information — search, assistants, translation — perform poorly in Somali, and nobody is measuring how poorly, or where the failures cause real harm.</p>
+
+        <p>Dhig Labs is a non-profit research laboratory in Mogadishu built to change this. We work on two things.</p>
+
+        <p>The first is data. The Dhig Platform invites Somali speakers to write, record, and validate language data across the sectors where language matters most: health, education, agriculture, law, media, religion. Models assist; people verify. Every dataset we produce is released under an open license, and every contributor is credited and consented.</p>
+
+        <p>The second is measurement. We are building the evaluation infrastructure that Somali currently lacks: safety and toxicity test sets, translation and comprehension benchmarks, red-teaming methods designed for low-resource languages. When a frontier lab wants to know whether its model is safe and accurate in Somali, we want the answer to be a benchmark score, not a guess.</p>
+
+        <p>We are starting small: a pilot in one or two sectors, a first cohort of contributors, a first open dataset, a first paper. Everything we make will be public.</p>
+
+        <p>If you speak Somali — any dialect — you can help us write it down. If you are a researcher, a university, or a funder who believes no language should be left out of this technology, we would like to hear from you. <a href="/contact.html">Get in touch</a>.</p>
+
+        <p lang="so" class="muted"><em>[SOMALI TRANSLATION — founders to write: a closing paragraph in Somali summarizing the invitation above.]</em></p><!-- VERIFY SOMALI -->
+
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Dhig Labs · Mogadishu, Somalia</p>
+      <p>
+        <a href="https://github.com/dhiglabs">GitHub</a> ·
+        <a href="https://huggingface.co/dhiglabs">Hugging Face</a> ·
+        <a href="mailto:info@dhiglabs.org">Email</a>
+      </p>
+      <p class="flourish" lang="so">Ereyada waa hanti.</p><!-- VERIFY SOMALI: "words are wealth" — confirm with founders before launch -->
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
