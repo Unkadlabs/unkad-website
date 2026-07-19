@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'The Dhig Platform',
+  title: 'The Unkad Platform',
   description:
     'An open platform where Somali speakers write, record, and validate language data across sectors and dialects. Model-assisted, human-verified, openly licensed.',
   alternates: { canonical: '/platform' },
   openGraph: {
-    title: 'The Dhig Platform — Dhig Labs',
+    title: 'The Unkad Platform — Unkad Labs',
     description:
       'Community-built Somali language data: model-assisted, human-verified, released under open licenses.',
     type: 'website',
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
 export default function PlatformPage() {
   return (
     <div className="container">
-      <h1>The Dhig Platform</h1>
+      <h1>The Unkad Platform</h1>
 
       <p>
-        The Dhig Platform is our flagship project: an open platform where Somali speakers write,
-        record, and validate language data. Contribution is organized by sector — health,
+        The Unkad Platform is our flagship project: an open platform where Somali speakers
+        write, record, and validate language data. Contribution is organized by sector — health,
         education, agriculture, law, media, religion — and by dialect, covering both Maxaa tiri
         and Maay.
         {/* VERIFY SOMALI: dialect names */}

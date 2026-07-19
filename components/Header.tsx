@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import UnkadMark from './UnkadMark';
 
 const links = [
   { href: '/research', label: 'Research' },
   { href: '/platform', label: 'Platform' },
   { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/articles', label: 'Articles' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -36,7 +37,8 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <Link className="wordmark" href="/">
-          Dhig Labs
+          <UnkadMark size={15} />
+          Unkad
         </Link>
         <nav aria-label="Main">
           <button

@@ -1,19 +1,19 @@
 import type { MetadataRoute } from 'next';
-import { posts } from '@/lib/posts';
+import { getAllArticles } from '@/lib/articles';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://dhiglabs.org';
+  const base = 'https://unkad.com';
 
-  const pages = ['', '/research', '/platform', '/about', '/contact', '/blog'].map((path) => ({
+  const pages = ['', '/research', '/platform', '/about', '/contact', '/articles'].map((path) => ({
     url: `${base}${path}`,
   }));
 
-  const postUrls = posts.map((post) => ({
-    url: `${base}/blog/${post.slug}`,
-    lastModified: post.date,
+  const articleUrls = getAllArticles().map((article) => ({
+    url: `${base}/articles/${article.slug}`,
+    lastModified: article.date,
   }));
 
-  return [...pages, ...postUrls];
+  return [...pages, ...articleUrls];
 }

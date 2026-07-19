@@ -3,12 +3,12 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Reach Dhig Labs — contributors, universities, and funders. Email, GitHub, and Hugging Face.',
+    'Reach Unkad Labs — contributors, universities, and funders. Email, GitHub, and Hugging Face.',
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact — Dhig Labs',
+    title: 'Contact — Unkad Labs',
     description:
-      'How to reach Dhig Labs: contributors, research collaborations, and funding conversations.',
+      'How to reach Unkad Labs: contributors, research collaborations, and funding conversations.',
     type: 'website',
     url: '/contact',
   },
@@ -20,18 +20,18 @@ export default function ContactPage() {
       <h1>Contact</h1>
 
       <p>
-        General: <a href="mailto:info@dhiglabs.org">info@dhiglabs.org</a>
+        {/* PLACEHOLDER: set up mailboxes on unkad.com before launch */}
+        General: <a href="mailto:info@unkad.com">info@unkad.com</a>
       </p>
       <p>
-        {/* PLACEHOLDER: confirm research email address */}
-        Research collaboration: <a href="mailto:research@dhiglabs.org">research@dhiglabs.org</a>
+        Research collaboration: <a href="mailto:research@unkad.com">research@unkad.com</a>
       </p>
 
       <p>
         {/* PLACEHOLDER: confirm GitHub / Hugging Face org URLs */}
-        GitHub: <a href="https://github.com/dhiglabs">github.com/dhiglabs</a>
+        GitHub: <a href="https://github.com/unkadlabs">github.com/unkadlabs</a>
         <br />
-        Hugging Face: <a href="https://huggingface.co/dhiglabs">huggingface.co/dhiglabs</a>
+        Hugging Face: <a href="https://huggingface.co/unkadlabs">huggingface.co/unkadlabs</a>
         <br />
         X: [X PROFILE URL]
         <br />

@@ -4,13 +4,13 @@ import Footer from '@/components/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dhiglabs.org'),
+  metadataBase: new URL('https://unkad.com'),
   title: {
-    default: 'Dhig Labs — Somali language data and AI safety research',
-    template: '%s — Dhig Labs',
+    default: 'Unkad Labs — Somali language AI and alignment research',
+    template: '%s — Unkad Labs',
   },
   description:
-    'Dhig Labs is a non-profit AI research laboratory in Mogadishu building open Somali language datasets and safety evaluations for low-resource languages.',
+    'Unkad Labs is a non-profit AI research laboratory in Mogadishu building open Somali language datasets, safety evaluations, and alignment research for low-resource languages.',
 };
 
 // Applies a saved theme before first paint to avoid a flash of the wrong theme.

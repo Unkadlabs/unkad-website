@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Dhig Labs — globals.css
+   Unkad Labs — globals.css
    Hand-written. No frameworks. One stylesheet for the whole site.
    ========================================================================== */
 
@@ -194,6 +194,9 @@ main {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--serif);
   font-weight: 700;
   font-size: 1.05rem;
@@ -308,6 +311,42 @@ main {
   margin-top: 0.75rem;
 }
 
+/* ---- Brand mark -----------------------------------------------------------
+   A "U" of seven square cells: unug (cell, unit) building unkad (creation
+   from nothing). The accent cell is the seed. On the home page the mark
+   assembles cell by cell, outward from the seed. */
+
+.mark .cell {
+  fill: currentColor;
+}
+
+.mark .seed {
+  fill: var(--accent);
+}
+
+.hero-mark {
+  display: block;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mark--animated .cell {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: cell-in 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
 /* ---- Home ---------------------------------------------------------------- */
 
 .hero {
@@ -397,7 +436,7 @@ main {
   font-style: italic;
 }
 
-/* ---- Article (blog post) ------------------------------------------------- */
+/* ---- Article ------------------------------------------------------------- */
 
 article .post-meta {
   font-family: var(--mono);
@@ -409,6 +448,34 @@ article .post-meta {
 .back-link {
   font-family: var(--mono);
   font-size: 0.78rem;
+}
+
+/* Rendered markdown body */
+.article-body h2 {
+  font-size: 1.25rem;
+  margin: 2.25rem 0 0.75rem;
+}
+
+.article-body h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.article-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.article-body code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+}
+
+.article-body hr {
+  margin: 2.5rem 0;
 }
 
 /* ---- Forms (email signup placeholder) ------------------------------------ */
