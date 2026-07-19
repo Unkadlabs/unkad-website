@@ -6,6 +6,8 @@ export const metadata: Metadata = {
     'Alignment and evaluation infrastructure for Somali: safety test sets, refusal and toxicity evaluations, benchmarks, and red-teaming methods for low-resource languages.',
   alternates: { canonical: '/research' },
   openGraph: {
+    siteName: 'Unkad Labs',
+    locale: 'en_US',
     title: 'Research — Unkad Labs',
     description:
       'Safety test sets, benchmarks, and red-teaming methodology for Somali and other low-resource languages.',

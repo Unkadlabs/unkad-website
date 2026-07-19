@@ -7,6 +7,8 @@ export const metadata: Metadata = {
     'An open platform where Somali speakers write, record, and validate language data across sectors and dialects. Model-assisted, human-verified, openly licensed.',
   alternates: { canonical: '/platform' },
   openGraph: {
+    siteName: 'Unkad Labs',
+    locale: 'en_US',
     title: 'The Unkad Platform — Unkad Labs',
     description:
       'Community-built Somali language data: model-assisted, human-verified, released under open licenses.',

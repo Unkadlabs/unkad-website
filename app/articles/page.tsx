@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     'Writing from Unkad Labs on Somali language AI, alignment, and building open research infrastructure from Mogadishu.',
   alternates: { canonical: '/articles' },
   openGraph: {
+    siteName: 'Unkad Labs',
+    locale: 'en_US',
     title: 'Articles — Unkad Labs',
     description: 'Writing from Unkad Labs on Somali language AI and alignment research.',
     type: 'website',

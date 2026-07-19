@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     'Unkad Labs is a non-profit AI research laboratory in Mogadishu building open Somali language datasets, safety evaluations, and alignment research for low-resource languages.',
   alternates: { canonical: '/' },
   openGraph: {
+    siteName: 'Unkad Labs',
+    locale: 'en_US',
     title: 'Unkad Labs',
     description:
       'A non-profit AI research laboratory creating the Somali language infrastructure of the AI age — from nothing, cell by cell.',

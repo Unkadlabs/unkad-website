@@ -6,6 +6,8 @@ export const metadata: Metadata = {
     'Reach Unkad Labs — contributors, universities, and funders. Email, GitHub, and Hugging Face.',
   alternates: { canonical: '/contact' },
   openGraph: {
+    siteName: 'Unkad Labs',
+    locale: 'en_US',
     title: 'Contact — Unkad Labs',
     description:
       'How to reach Unkad Labs: contributors, research collaborations, and funding conversations.',
