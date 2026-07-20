@@ -49,6 +49,22 @@ export default function ResearchPage() {
         </li>
         <li>
           <strong>
+            <a href="https://huggingface.co/spaces/unkadlabs/somalibench">
+              SomaliBench leaderboard
+            </a>
+          </strong>{' '}
+          — live English-vs-Somali refusal rates for open-weight models: gaps as large
+          as 0.97 vs 0.07 on identical harmful prompts.
+        </li>
+        <li>
+          <strong>
+            <a href="https://github.com/unkadlabs/somali-token-tax">The Somali token tax</a>
+          </strong>{' '}
+          — reproducible measurement of tokenizer cost: Somali pays 1.7–2.2× across
+          every major LLM tokenizer.
+        </li>
+        <li>
+          <strong>
             <a href="https://huggingface.co/unkadlabs">unkadlabs on Hugging Face</a>
           </strong>{' '}
           — where corpus releases and benchmarks ship, versioned, under CC BY-SA 4.0.
