@@ -11,6 +11,10 @@
   --muted: #6B6862;
   --accent: #0F6B5C;
   --rule: #E5E2DA;
+  --card: #FFFFFF;
+  --accent-soft: rgba(15, 107, 92, 0.08);
+  --shadow: 0 1px 2px rgba(26, 25, 23, 0.04), 0 4px 16px rgba(26, 25, 23, 0.05);
+  --radius: 12px;
 
   --serif: Charter, Georgia, 'Times New Roman', serif;
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
@@ -25,6 +29,9 @@
     --muted: #A5A19A;
     --accent: #4DB6A5;
     --rule: #2E2C29;
+    --card: #1C1B19;
+    --accent-soft: rgba(77, 182, 165, 0.1);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -35,6 +42,9 @@
   --muted: #6B6862;
   --accent: #0F6B5C;
   --rule: #E5E2DA;
+  --card: #FFFFFF;
+  --accent-soft: rgba(15, 107, 92, 0.08);
+  --shadow: 0 1px 2px rgba(26, 25, 23, 0.04), 0 4px 16px rgba(26, 25, 23, 0.05);
 }
 
 :root[data-theme="dark"] {
@@ -43,6 +53,9 @@
   --muted: #A5A19A;
   --accent: #4DB6A5;
   --rule: #2E2C29;
+  --card: #1C1B19;
+  --accent-soft: rgba(77, 182, 165, 0.1);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* ---- Base ---------------------------------------------------------------- */
@@ -182,7 +195,13 @@ main {
 /* ---- Header / nav -------------------------------------------------------- */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .site-header .container {
@@ -524,4 +543,224 @@ article .post-meta {
 
 .signup button:hover {
   opacity: 0.9;
+}
+
+/* ---- Lab UI upgrade -------------------------------------------------------
+   Cards, buttons, live stats, and the institutional footer — the same
+   component language as qor.unkad.com, tuned for the editorial site. */
+
+.btn {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  color: var(--bg);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.65rem 1.3rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  opacity: 0.92;
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-quiet {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-quiet:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.ws-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  box-shadow: var(--shadow);
+  color: var(--text);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ws-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.ws-card h3 {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+}
+
+.ws-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.ws-card .ws-more {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin-top: 0.7rem;
+}
+
+/* Live stats */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+.stat {
+  flex: 1 1 9rem;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.95rem 1.15rem;
+}
+
+.stat .n {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  display: block;
+  line-height: 1.15;
+}
+
+.stat .label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.progress-card { margin: 1.25rem 0; }
+
+.progress-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.progress-head .eyebrow { margin: 0; }
+
+.progress-track {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--rule);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+.hint-line {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0;
+}
+
+/* Institutional footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+  padding-block: 2.25rem 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.footer-blurb {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+
+.footer-head {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.7rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footer-col a {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.footer-col a:hover { color: var(--accent); }
+
+.footer-base {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.1rem 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
 }

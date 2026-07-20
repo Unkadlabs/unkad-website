@@ -38,6 +38,23 @@ export default function ResearchPage() {
         honest negative results included.
       </p>
 
+      <span className="eyebrow">Infrastructure</span>
+      <ul>
+        <li>
+          <strong>
+            <a href="https://qor.unkad.com">Qor Af-Soomaali</a>
+          </strong>{' '}
+          — our live community platform: consented, dialect-tagged Somali text with two-tier
+          validation (peer agreement + linguist sign-off).
+        </li>
+        <li>
+          <strong>
+            <a href="https://huggingface.co/unkadlabs">unkadlabs on Hugging Face</a>
+          </strong>{' '}
+          — where corpus releases and benchmarks ship, versioned, under CC BY-SA 4.0.
+        </li>
+      </ul>
+
       <span className="eyebrow">Publications</span>
       <p className="empty-state">Our first benchmark paper is in preparation (2026).</p>
 
