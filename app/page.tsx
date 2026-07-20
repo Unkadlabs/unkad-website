@@ -84,7 +84,6 @@ export default function HomePage() {
 
       <p>
         We publish everything openly — on{' '}
-        {/* PLACEHOLDER: confirm GitHub / Hugging Face org URLs */}
         <a href="https://github.com/unkadlabs">GitHub</a> and{' '}
         <a href="https://huggingface.co/unkadlabs">Hugging Face</a>.
       </p>

@@ -68,7 +68,6 @@ const orgJsonLd = {
     addressLocality: 'Mogadishu',
     addressCountry: 'SO',
   },
-  // PLACEHOLDER: confirm org URLs
   sameAs: ['https://github.com/unkadlabs', 'https://huggingface.co/unkadlabs'],
 };
 

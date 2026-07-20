@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--", "--port", "3742"],
       "port": 3742
+    },
+    {
+      "name": "unkad-platform",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/khalidyusufdahir/research/unkad-platform", "run", "dev", "--", "--port", "3743"],
+      "port": 3743
     }
   ]
 }

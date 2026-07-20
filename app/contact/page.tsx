@@ -30,7 +30,6 @@ export default function ContactPage() {
       </p>
 
       <p>
-        {/* PLACEHOLDER: confirm GitHub / Hugging Face org URLs */}
         GitHub: <a href="https://github.com/unkadlabs">github.com/unkadlabs</a>
         <br />
         Hugging Face: <a href="https://huggingface.co/unkadlabs">huggingface.co/unkadlabs</a>

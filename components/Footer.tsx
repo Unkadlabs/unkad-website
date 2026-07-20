@@ -4,7 +4,6 @@ export default function Footer() {
       <div className="container">
         <p>© 2026 Unkad Labs · Mogadishu, Somalia</p>
         <p>
-          {/* PLACEHOLDER: confirm GitHub / Hugging Face org URLs */}
           <a href="https://github.com/unkadlabs">GitHub</a> ·{' '}
           <a href="https://huggingface.co/unkadlabs">Hugging Face</a> ·{' '}
           <a href="mailto:info@unkad.com">Email</a>
