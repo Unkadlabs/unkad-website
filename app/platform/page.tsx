@@ -52,8 +52,12 @@ export default function PlatformPage() {
       <hr />
 
       <p>
-        <strong>Want to contribute Somali text or speech, or partner with us?</strong> →{' '}
-        <Link href="/contact">Contact</Link>
+        <strong>The platform is live.</strong> Write, translate, and validate Somali —{' '}
+        <a href="https://qor.unkad.com">qor.unkad.com</a>
+      </p>
+
+      <p>
+        Want to partner with us? → <Link href="/contact">Contact</Link>
       </p>
 
       {/* Email signup placeholder.

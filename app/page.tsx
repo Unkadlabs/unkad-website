@@ -65,7 +65,8 @@ export default function HomePage() {
           </h3>
           <p>
             An open platform where Somali speakers write, record, and validate language data
-            across sectors and dialects. Everything is released openly. Cell by cell.
+            across sectors and dialects. Everything is released openly. Cell by cell. Live at{' '}
+            <a href="https://qor.unkad.com">qor.unkad.com</a>.
           </p>
         </div>
         <div>
