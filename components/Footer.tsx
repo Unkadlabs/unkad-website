@@ -6,6 +6,7 @@ export default function Footer() {
         <p>
           <a href="https://github.com/unkadlabs">GitHub</a> ·{' '}
           <a href="https://huggingface.co/unkadlabs">Hugging Face</a> ·{' '}
+          <a href="https://x.com/unkadlabs">X</a> ·{' '}
           <a href="mailto:info@unkad.com">Email</a>
         </p>
         {/* VERIFY SOMALI: "words are wealth" — confirm with founders before launch */}

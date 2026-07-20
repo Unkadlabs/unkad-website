@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    // PLACEHOLDER: add `site: '@handle'` once the X account exists.
+    site: '@unkadlabs',
   },
   // PLACEHOLDER: after adding the site to Google Search Console, put the
   // verification token here: verification: { google: '...' },
@@ -68,7 +68,11 @@ const orgJsonLd = {
     addressLocality: 'Mogadishu',
     addressCountry: 'SO',
   },
-  sameAs: ['https://github.com/unkadlabs', 'https://huggingface.co/unkadlabs'],
+  sameAs: [
+    'https://github.com/unkadlabs',
+    'https://huggingface.co/unkadlabs',
+    'https://x.com/unkadlabs',
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
