@@ -2,6 +2,22 @@
 title: "The Somali token tax"
 date: "2026-07-20"
 description: "Somali speakers pay 1.7–2.2× more tokens than English speakers for identical content, across every major LLM tokenizer. We measured it — and the tax turns out to be a design choice."
+image: "/images/somali-token-tax.png"
+topics:
+  - Evaluation
+  - Tokenization
+  - Somali NLP
+keywords:
+  - Somali NLP
+  - Somali language AI
+  - tokenizer fertility
+  - token tax
+  - low-resource languages
+  - LLM tokenization
+  - FLORES-200 Somali
+  - African NLP
+  - AI fairness
+  - Somali tokenizer
 ---
 
 Before a language model reads a single word, a tokenizer decides how to slice the text into pieces. Those pieces — tokens — are the unit of everything: what API users pay for, how fast responses stream, how much fits in a context window. If a tokenizer slices your language inefficiently, you pay more, wait longer, and fit less, on every request, forever.

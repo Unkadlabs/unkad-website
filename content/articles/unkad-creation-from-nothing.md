@@ -2,6 +2,18 @@
 title: "Unkad: creation from nothing"
 date: "2026-07-19"
 description: "Why we started a non-profit AI research lab in Mogadishu, what the name Unkad means, and how to take part."
+topics:
+  - The lab
+  - Somali NLP
+keywords:
+  - Somali AI research lab
+  - Somali NLP
+  - AI alignment
+  - low-resource languages
+  - Mogadishu AI research
+  - Somali language dataset
+  - Maay dialect
+  - AI safety Somali
 ---
 
 In Somali, <em lang="so">unkad</em> means creation from nothing.<!-- VERIFY SOMALI --> It shares a root with <em lang="so">unug</em> — the cell, the smallest unit of a living thing. That pairing is the whole idea of this lab: large things are created from nothing by assembling small units, one by one, until something lives.
