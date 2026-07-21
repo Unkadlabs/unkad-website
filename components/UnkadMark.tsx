@@ -1,5 +1,5 @@
 /* The Unkad mark.
-   A "U" assembled from seven square cells — unug (cell, unit) building
+   A "U" assembled from seven square cells: unug (cell, unit) building
    unkad (creation from nothing). The single accent-colored cell is the
    seed; when animated, the mark assembles outward from it, bottom-up.
    Cells are ordered by animation sequence: seed first. */
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const CELLS: Array<{ x: number; y: number; seed?: boolean }> = [
-  { x: 38, y: 70, seed: true }, // the seed — bottom center
+  { x: 38, y: 70, seed: true }, // the seed, bottom center
   { x: 6, y: 70 },
   { x: 70, y: 70 },
   { x: 6, y: 38 },

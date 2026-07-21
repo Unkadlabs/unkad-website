@@ -11,7 +11,7 @@ function currentTheme(): Theme {
 }
 
 export default function ThemeToggle() {
-  // null until mounted — the server render shows a neutral label,
+  // null until mounted; the server render shows a neutral label,
   // then the real theme is read on the client.
   const [theme, setTheme] = useState<Theme | null>(null);
 
@@ -25,7 +25,7 @@ export default function ThemeToggle() {
     try {
       localStorage.setItem('theme', next);
     } catch {
-      /* private mode or storage disabled — theme still applies this visit */
+      /* private mode or storage disabled; theme still applies this visit */
     }
     setTheme(next);
   }

@@ -7,8 +7,8 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://unkad.com'),
   title: {
-    default: 'Unkad Labs — Somali language AI and alignment research',
-    template: '%s — Unkad Labs',
+    default: 'Unkad Labs · Somali language AI and alignment research',
+    template: '%s · Unkad Labs',
   },
   description:
     'Unkad Labs is a non-profit AI research laboratory in Mogadishu building open Somali language datasets, safety evaluations, and alignment research for low-resource languages.',

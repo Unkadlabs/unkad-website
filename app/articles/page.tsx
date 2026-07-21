@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
-    title: 'Articles — Unkad Labs',
+    title: 'Articles · Unkad Labs',
     description: 'Writing from Unkad Labs on Somali language AI and alignment research.',
     type: 'website',
     url: '/articles',

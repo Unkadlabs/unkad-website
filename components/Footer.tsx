@@ -11,8 +11,9 @@ export default function Footer() {
               Unkad Labs
             </span>
             <p className="footer-blurb">
-              A non-profit AI research laboratory in Mogadishu, Somalia — building open Somali
-              language datasets, safety evaluations, and alignment research.
+              A non-profit AI research laboratory in Mogadishu, Somalia, measuring whether AI
+              systems behave safely in Somali and building the open data that answering
+              that question requires.
             </p>
           </div>
           <div className="footer-col">
@@ -60,7 +61,7 @@ export default function Footer() {
           <span style={{ fontFamily: 'var(--mono)', fontSize: '0.74rem' }}>
             © 2026 Unkad Labs · Mogadishu, Somalia · CC BY-SA 4.0 data
           </span>
-          {/* VERIFY SOMALI: "words are wealth" — confirm with founders before launch */}
+          {/* VERIFY SOMALI: "words are wealth", confirm with founders before launch */}
           <span className="flourish" lang="so" style={{ margin: 0 }}>
             Ereyada waa hanti.
           </span>

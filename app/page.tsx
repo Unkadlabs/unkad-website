@@ -5,16 +5,16 @@ import LiveStats from '@/components/LiveStats';
 
 export const metadata: Metadata = {
   // Home keeps the full default title from the layout (no template suffix).
-  title: { absolute: 'Unkad Labs — Somali language AI and alignment research' },
+  title: { absolute: 'Unkad Labs · Somali language AI and alignment research' },
   description:
-    'Unkad Labs is a non-profit AI research laboratory in Mogadishu building open Somali language datasets, safety evaluations, and alignment research for low-resource languages.',
+    'Unkad Labs is a non-profit AI research laboratory in Mogadishu measuring whether AI systems are safe in Somali, and building the open data that safety evaluation requires.',
   alternates: { canonical: '/' },
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
     title: 'Unkad Labs',
     description:
-      'A non-profit AI research laboratory creating the Somali language infrastructure of the AI age — from nothing, cell by cell.',
+      'Measuring whether AI systems are safe in Somali, and building the open data that safety evaluation requires.',
     type: 'website',
     url: '/',
   },
@@ -28,25 +28,46 @@ export default function HomePage() {
         <h1>Unkad Labs</h1>
         {/* VERIFY SOMALI */}
         <p className="gloss">
-          <span lang="so">Unkad</span> — Somali for creation from nothing.
+          <span lang="so">Unkad</span>, Somali for creation from nothing.
         </p>
       </div>
 
       <p className="mission">
-        Unkad Labs is a non-profit AI research laboratory building the Somali language into the
-        age of artificial intelligence. We create open datasets through community contribution,
-        and we research how to evaluate and align AI systems for Somali and other low-resource
-        languages — making the language richer, and the systems that speak it safer.
+        Unkad Labs is a non-profit AI research laboratory in Mogadishu. We measure whether AI
+        systems behave safely in Somali, and we build the open language data that safety
+        evaluation requires. Our methods are designed to transfer to the hundreds of languages
+        in the same position.
       </p>
 
       <div className="btn-row">
-        <a className="btn" href="https://qor.unkad.com">
-          Contribute on Qor Af-Soomaali
-        </a>
-        <Link className="btn btn-quiet" href="/research">
-          Read the research agenda
+        <Link className="btn" href="/research">
+          The research agenda
         </Link>
+        <a className="btn btn-quiet" href="https://qor.unkad.com">
+          Contribute Somali text
+        </a>
       </div>
+
+      <span className="eyebrow">The problem</span>
+      <p>
+        When a frontier lab publishes a safety evaluation, it is almost always an evaluation in
+        English. The model is red-teamed in English, its refusal behaviour is measured in
+        English, its jailbreak resistance is characterised in English. Then it is deployed
+        globally, and the safety claims travel with it as though language were incidental to
+        them.
+      </p>
+      <p>
+        It is not incidental. We put identical harmful requests to open-weight models in English
+        and in Somali. Llama 3.1 refuses 97 percent of the time in English and 7 percent of the
+        time in Somali. Aya drops from 80 percent to 5 percent. Safety behaviour that holds in
+        one language does not automatically hold in another, and for most of the world&rsquo;s
+        languages nobody has checked whether it does.
+      </p>
+      <p>
+        Somali is spoken by more than twenty million people. It has no safety benchmark of any
+        scale, no entry in the flagship African reasoning benchmarks, and almost no
+        dialect-tagged data. That absence is the reason this lab exists.
+      </p>
 
       <span className="eyebrow">The corpus, live</span>
       <LiveStats
@@ -56,54 +77,38 @@ export default function HomePage() {
         pendingLabel="awaiting validation"
       />
       <p className="hint-line">
-        Live from <a href="https://qor.unkad.com">qor.unkad.com</a> — every sentence written,
-        peer-validated, and linguist-verified by the community, released under CC BY-SA 4.0.
-      </p>
-
-      <span className="eyebrow">Why</span>
-      <p>
-        Somali is spoken by more than 20 million people. Yet the infrastructure AI needs — clean
-        text, annotated data, benchmarks, safety evaluations — mostly does not exist for it.
-        What data there is runs scarce and noisy, and dialects such as Maay are nearly absent
-        altogether.
-      </p>
-      <p>
-        There is also no systematic way to measure whether AI is safe and accurate in Somali. A
-        model can fail quietly — mistranslating a medical instruction, complying with a request
-        it would refuse in English — and no benchmark exists to catch it.
-      </p>
-      <p>
-        AI is becoming the gateway to information and services. Without deliberate work, Somali
-        speakers risk being left out, or served by systems that fail them in ways no one is
-        measuring. We are not documenting infrastructure that exists. We are creating it from
-        nothing.
+        Live from <a href="https://qor.unkad.com">qor.unkad.com</a>. Every sentence is written by
+        a consenting Somali speaker, validated by the community, verified by a linguist, and
+        released under CC BY-SA 4.0.
       </p>
 
       <span className="eyebrow">What we do</span>
       <div className="cols">
-        <a className="ws-card" href="https://qor.unkad.com">
-          <h3>Data — The Unkad Platform</h3>
-          <p>
-            Qor Af-Soomaali: Somali speakers write, translate, and validate language data across
-            sectors and dialects. Peer-validated, linguist-verified, released openly. Cell by
-            cell.
-          </p>
-          <span className="ws-more">qor.unkad.com →</span>
-        </a>
         <Link className="ws-card" href="/research">
-          <h3>Safety &amp; Alignment Research</h3>
+          <h3>Safety and alignment research</h3>
           <p>
-            Benchmarks, safety test sets, and red-teaming methodology for Somali — built so the
-            methods transfer to every language in the same position.
+            Refusal evaluations, safety test sets, and red-teaming methods built for
+            low-resource languages, so that behaviour which fails outside English becomes
+            visible and measurable.
           </p>
           <span className="ws-more">Research agenda →</span>
         </Link>
+        <a className="ws-card" href="https://qor.unkad.com">
+          <h3>The data underneath</h3>
+          <p>
+            Evaluation sets are built out of language. Qor Af-Soomaali is where Somali speakers
+            write, translate, and validate the text that this work requires, across sectors and
+            both major dialects.
+          </p>
+          <span className="ws-more">qor.unkad.com →</span>
+        </a>
       </div>
 
       <hr />
 
       <p>
-        We publish everything openly — on <a href="https://github.com/unkadlabs">GitHub</a> and{' '}
+        Everything we produce is published openly, including methodology and negative results,
+        on <a href="https://github.com/unkadlabs">GitHub</a> and{' '}
         <a href="https://huggingface.co/unkadlabs">Hugging Face</a>.
       </p>
     </div>

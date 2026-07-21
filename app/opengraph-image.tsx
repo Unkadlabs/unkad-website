@@ -5,7 +5,7 @@ import { ImageResponse } from 'next/og';
 import { OG_SIZE, OG_COLORS, ogFonts, OgMark } from '@/lib/og';
 
 export const dynamic = 'force-static';
-export const alt = 'Unkad Labs — Somali language AI and alignment research';
+export const alt = 'Unkad Labs · Somali language AI and alignment research';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
 
@@ -37,7 +37,7 @@ export default function OgImage() {
             Unkad Labs
           </div>
           <div style={{ marginTop: 18, fontSize: 34, color: OG_COLORS.muted }}>
-            Unkad — Somali for creation from nothing.
+            Unkad, Somali for creation from nothing.
           </div>
         </div>
         <div

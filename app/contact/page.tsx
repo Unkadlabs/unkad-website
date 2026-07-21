@@ -3,12 +3,12 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Reach Unkad Labs — contributors, universities, and funders. Email, GitHub, and Hugging Face.',
+    'Reach Unkad Labs: contributors, researchers, and institutions. Email, GitHub, and Hugging Face.',
   alternates: { canonical: '/contact' },
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
-    title: 'Contact — Unkad Labs',
+    title: 'Contact · Unkad Labs',
     description:
       'How to reach Unkad Labs: contributors, research collaborations, and funding conversations.',
     type: 'website',
