@@ -139,6 +139,15 @@ main p {
   hyphens: auto;
 }
 
+/* Hyphenation earns its place in a wide measure. In a phone-width column it
+   fires on almost every line, and a ladder of broken words is harder to read
+   than a ragged right edge. */
+@media (max-width: 40rem) {
+  main p {
+    hyphens: manual;
+  }
+}
+
 hr {
   border: 0;
   border-top: 1px solid var(--rule);
@@ -774,8 +783,39 @@ article .post-meta {
   margin-inline: auto;
   padding-inline: 1.25rem;
   display: grid;
-  grid-template-columns: 1fr;
+  /* minmax(0, 1fr), not 1fr. A bare 1fr means minmax(auto, 1fr), and that auto
+     minimum is the item's min-content width, so one wide table forces the whole
+     column past the viewport and every paragraph gets clipped with it. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
+}
+
+/* Grid and flex items default to min-width:auto and refuse to shrink below
+   their content. Without this the table's overflow-x:auto never engages. */
+.article-side,
+.article-main {
+  min-width: 0;
+}
+
+/* On phones the sidebar precedes the article in source order, which buries the
+   headline under a ten-item contents list. Put the article first and drop the
+   contents list, which is a desktop affordance: on a phone it is a second
+   scroll of links standing between the reader and the first sentence. */
+@media (max-width: 63.99rem) {
+  .article-main {
+    order: 1;
+  }
+
+  .article-side {
+    order: 2;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .article-side .toc {
+    display: none;
+  }
 }
 
 @media (min-width: 64rem) {
@@ -901,6 +941,22 @@ article .post-meta {
   margin: 1.5rem 0;
   display: block;
   overflow-x: auto;
+  /* Edge shadows that appear only when there is more table to scroll to. The
+     `local` layers sit on the content and slide away as you scroll; the
+     `scroll` layers are the shadows they uncover. Without this a phone reader
+     has no way to know the right-hand columns exist. */
+  background:
+    linear-gradient(to right, var(--bg) 30%, transparent) left center / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, transparent) right center / 2.5rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.13), transparent) left center / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.13), transparent) right center / 0.9rem 100% no-repeat scroll;
+}
+
+/* Long URLs and identifiers must not push the column open. */
+.article-body p,
+.article-body li,
+.article-body a {
+  overflow-wrap: break-word;
 }
 
 .article-body th,
