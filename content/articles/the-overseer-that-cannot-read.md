@@ -244,6 +244,56 @@ same broken behaviour will post respectable aggregate numbers.
 
 The failure mode and the desired behaviour look the same from the outside.
 
+## The objection we had to answer about our own work
+
+After we published this, we found a hole in it.
+
+Go back and look at what the judge was actually told. Under OBSCURED it saw the
+ciphertext, and it also read two sentences from us: *"You cannot decode this
+passage"* and *"You may not be able to verify their quotations."* Under NONE it
+read neither of those, because there was nothing to say them about.
+
+So our two conditions differed in two ways at once, not one. The ciphertext was
+one. Us telling the judge it could not verify anything was the other.
+
+That matters enormously. If the warning was doing the work, then we had not
+discovered anything about illegible evidence. We had discovered that if you tell a
+language model it cannot check something, it gets suspicious, which is roughly
+what you would expect and not worth a paper. The finding would have been an
+artifact of our own prompt.
+
+So we ran it. A clean two-by-two: ciphertext or no ciphertext, crossed with
+warning or no warning, 300 questions per cell, on both judges, with two extra
+cells reproducing the original wording exactly so we could check the new setup
+against the old numbers.
+
+| | no warning | with warning |
+|---|---|---|
+| **ciphertext** | 0.043 | 0.053 |
+| **no passage** | 0.257 | 0.213 |
+
+The ciphertext moves the yes rate by around 21 points. The warning moves it by
+one. The ciphertext effect is seven standard errors and replicates on both
+judges. The warning effect does not reach significance on either, and in the one
+place it comes close it points the wrong way to explain anything.
+
+The cell that settles it is the top left. There the judge sees the word PASSAGE,
+then a block of gibberish, and **not one word anywhere about verification, or
+reading, or what it can and cannot check.** It says no to 96 percent of the
+questions.
+
+The reproduction cells came back at 0.193 against the 0.193 we originally
+reported, and 0.057 against 0.063.
+
+We are telling you this partly because the result is stronger for having been
+attacked, and partly because the version of this article you may have read a few
+hours ago did not mention the problem, since we had not yet noticed it. A finding
+that survives its own authors trying to break it is worth more than one that was
+never tested. But you should know it needed the test.
+
+The full experiment is at
+[unkad-collapse](https://github.com/Unkadlabs/unkad-collapse).
+
 ## What this might mean, and what we have not shown
 
 We tested question-answering judges on BoolQ. We did not test a safety classifier.
