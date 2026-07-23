@@ -291,8 +291,8 @@ hours ago did not mention the problem, since we had not yet noticed it. A findin
 that survives its own authors trying to break it is worth more than one that was
 never tested. But you should know it needed the test.
 
-The full experiment is at
-[unkad-collapse](https://github.com/Unkadlabs/unkad-collapse).
+The full experiment is in the
+[`collapse/` directory of the oversight repository](https://github.com/Unkadlabs/unkad-oversight/tree/main/collapse).
 
 ## What this might mean, and what we have not shown
 
@@ -362,5 +362,5 @@ on half the test.
 ---
 
 *The full paper, pre-registration, code, and transcripts are available in our
-[oversight repository](https://github.com/unkadlabs). Correspondence to
+[oversight repository](https://github.com/Unkadlabs/unkad-oversight). Correspondence to
 research@unkad.com.*
