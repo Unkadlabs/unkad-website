@@ -5,7 +5,10 @@ import Footer from '@/components/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://unkad.com'),
+  // www is the primary domain; the apex unkad.com 301s to it. Metadata must use
+  // the non-redirecting host, because social crawlers (LinkedIn especially) drop
+  // an og:image that redirects even once.
+  metadataBase: new URL('https://www.unkad.com'),
   title: {
     default: 'Unkad Labs · Somali language AI and alignment research',
     template: '%s · Unkad Labs',

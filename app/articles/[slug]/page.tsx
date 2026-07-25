@@ -40,7 +40,7 @@ export default async function ArticlePage({ params }: Props) {
 
   const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent(
     article.title
-  )}&url=${encodeURIComponent(`https://unkad.com/articles/${slug}`)}&via=unkadlabs`;
+  )}&url=${encodeURIComponent(`https://www.unkad.com/articles/${slug}`)}&via=unkadlabs`;
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -50,15 +50,15 @@ export default async function ArticlePage({ params }: Props) {
     datePublished: article.date,
     inLanguage: 'en',
     keywords: article.keywords.join(', ') || undefined,
-    mainEntityOfPage: `https://unkad.com/articles/${slug}`,
+    mainEntityOfPage: `https://www.unkad.com/articles/${slug}`,
     image: article.image
-      ? `https://unkad.com${article.image}`
-      : `https://unkad.com/articles/${slug}/opengraph-image`,
-    author: { '@type': 'Organization', name: 'Unkad Labs', url: 'https://unkad.com' },
+      ? `https://www.unkad.com${article.image}`
+      : `https://www.unkad.com/articles/${slug}/opengraph-image`,
+    author: { '@type': 'Organization', name: 'Unkad Labs', url: 'https://www.unkad.com' },
     publisher: {
       '@type': 'Organization',
       name: 'Unkad Labs',
-      logo: { '@type': 'ImageObject', url: 'https://unkad.com/icon.svg' },
+      logo: { '@type': 'ImageObject', url: 'https://www.unkad.com/icon.svg' },
     },
   };
 
@@ -66,8 +66,8 @@ export default async function ArticlePage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Unkad Labs', item: 'https://unkad.com' },
-      { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://unkad.com/articles' },
+      { '@type': 'ListItem', position: 1, name: 'Unkad Labs', item: 'https://www.unkad.com' },
+      { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://www.unkad.com/articles' },
       { '@type': 'ListItem', position: 3, name: article.title },
     ],
   };
