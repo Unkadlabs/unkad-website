@@ -2,6 +2,8 @@
 title: "The overseer that cannot read"
 date: "2026-07-22"
 description: "We gave a model a passage it could not read and asked it to judge claims about that passage. It did not become uncertain. It started saying no to almost everything, and in doing so it scored a perfect 1.000 on half the data."
+hook: "62% → 6%"
+hookLabel: "How often the judge said yes, when it could read the source and when it could not"
 topics:
   - Safety
   - Scalable oversight

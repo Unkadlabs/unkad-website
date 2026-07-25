@@ -19,6 +19,8 @@ export type ArticleMeta = {
   topics: string[]; // short display chips (e.g. "Evaluation")
   keywords: string[]; // SEO keywords, merged into page metadata
   image: string | null; // optional hero/OG image path (e.g. /images/x.png)
+  hook: string | null; // optional focal stat for the OG card, e.g. "100 → 16"
+  hookLabel: string | null; // one-line caption under the hook
 };
 
 export type Heading = { id: string; text: string };
@@ -47,6 +49,8 @@ function toMeta(slug: string, data: Record<string, unknown>): ArticleMeta {
     topics: Array.isArray(data.topics) ? data.topics.map(String) : [],
     keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
     image: data.image ? String(data.image) : null,
+    hook: data.hook ? String(data.hook) : null,
+    hookLabel: data.hookLabel ? String(data.hookLabel) : null,
   };
 }
 

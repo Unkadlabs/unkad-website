@@ -2,6 +2,8 @@
 title: "The guard that waves Somali through"
 date: "2026-07-24"
 description: "We gave three safety filters the same 100 harmful requests in English and in Somali. In English, Llama Guard caught all 100. In Somali, it caught 16. The filters are not confused by Somali. They handle harmless Somali fine. They just stop seeing harm."
+hook: "100 → 16"
+hookLabel: "Harmful prompts a safety filter caught, English to Somali"
 topics:
   - Safety
   - Multilingual safety

@@ -2,6 +2,8 @@
 title: "The Somali token tax"
 date: "2026-07-20"
 description: "Every major tokenizer cuts Somali into roughly twice as many pieces as English. That fragmentation is where a model's relationship with a language begins, and we think it is connected to why safety behaviour does not survive translation."
+hook: "2×"
+hookLabel: "Every major tokenizer splits Somali into roughly twice as many pieces as English"
 image: "/images/somali-token-tax.png"
 topics:
   - Safety
