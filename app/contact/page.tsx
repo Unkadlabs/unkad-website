@@ -35,6 +35,8 @@ export default function ContactPage() {
         Hugging Face: <a href="https://huggingface.co/unkadlabs">huggingface.co/unkadlabs</a>
         <br />
         X: <a href="https://x.com/unkadlabs">x.com/unkadlabs</a>
+        <br />
+        LinkedIn: <a href="https://www.linkedin.com/company/unkadlabs">linkedin.com/company/unkadlabs</a>
       </p>
 
       <span className="eyebrow">Before you write</span>

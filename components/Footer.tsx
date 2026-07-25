@@ -52,6 +52,9 @@ export default function Footer() {
                 <a href="https://x.com/unkadlabs">X</a>
               </li>
               <li>
+                <a href="https://www.linkedin.com/company/unkadlabs">LinkedIn</a>
+              </li>
+              <li>
                 <a href="mailto:info@unkad.com">info@unkad.com</a>
               </li>
             </ul>
