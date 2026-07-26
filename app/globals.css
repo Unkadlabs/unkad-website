@@ -959,6 +959,40 @@ article .post-meta {
   overflow-wrap: break-word;
 }
 
+/* Code blocks scroll rather than widen, for the same reason tables do: a
+   preformatted diagram is as wide as its widest line, and on a phone that line
+   is wider than the screen. Without this the whole article column stretches to
+   fit it and every paragraph on the page goes off the right edge. */
+.article-body pre {
+  overflow-x: auto;
+  max-width: 100%;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 1rem 1.1rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--accent-soft, transparent);
+}
+
+/* Inside a scrolling block, wrapping would defeat the point. */
+.article-body pre code {
+  white-space: pre;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Inline code still wraps, so a long prompt quoted mid-sentence cannot push
+   the column open the way a block would. */
+.article-body :not(pre) > code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  overflow-wrap: break-word;
+}
+
 .article-body th,
 .article-body td {
   padding: 0.5rem 0.7rem;

@@ -3,8 +3,15 @@ import { createElement as h } from 'react';
 import fs from 'fs';
 import path from 'path';
 
-const OUT = path.join(process.cwd(), 'public', 'images', 'qor-poster-goal.png');
-const SIZE = 1200;
+const PORTRAIT = process.argv.includes('--portrait');
+const OUT = path.join(
+  process.cwd(),
+  'public',
+  'images',
+  PORTRAIT ? 'qor-poster-goal-4x5.png' : 'qor-poster-goal.png'
+);
+const W = PORTRAIT ? 1080 : 1200;
+const H = PORTRAIT ? 1350 : 1200;
 
 const BG = '#141312';
 const TEXT = '#E8E6E1';
@@ -60,7 +67,7 @@ const poster = h(
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: 100,
+      padding: PORTRAIT ? 96 : 100,
       backgroundColor: BG,
       backgroundImage:
         'radial-gradient(820px 640px at 50% 46%, rgba(77,182,165,0.15), rgba(20,19,18,0) 64%)',
@@ -82,23 +89,29 @@ const poster = h(
       [
         h(
           'div',
+          { key: 'pre', style: { display: 'flex', fontSize: 42, color: MUTED } },
+          'Yoolku waa'
+        ),
+        h(
+          'div',
           {
             key: 'n',
             style: {
               display: 'flex',
-              fontSize: 210,
+              fontSize: 196,
               fontWeight: 700,
               color: ACCENT,
               letterSpacing: '-0.03em',
               lineHeight: 1,
+              marginTop: 18,
             },
           },
           GOAL
         ),
         h(
           'div',
-          { key: 'l', style: { display: 'flex', fontSize: 44, color: MUTED, marginTop: 30 } },
-          'jumlado la hubiyay'
+          { key: 'l', style: { display: 'flex', fontSize: 42, color: MUTED, marginTop: 26 } },
+          'oo jumladood oo la hubiyay'
         ),
       ]
     ),
@@ -111,8 +124,8 @@ const poster = h(
   ]
 );
 
-const res = new ImageResponse(poster, { width: SIZE, height: SIZE, fonts });
+const res = new ImageResponse(poster, { width: W, height: H, fonts });
 const buf = Buffer.from(await res.arrayBuffer());
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, buf);
-console.log(`wrote ${OUT} (${(buf.length / 1024).toFixed(0)} KB, ${SIZE}x${SIZE})`);
+console.log(`wrote ${OUT} (${(buf.length / 1024).toFixed(0)} KB, ${W}x${H})`);
