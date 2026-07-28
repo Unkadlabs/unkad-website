@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   },
 };
 
+// Dataset structured data. Google Dataset Search is where researchers actually
+// look for corpora, and it only lists pages that carry schema.org/Dataset.
+// A Somali corpus that is invisible there is invisible to the people most
+// likely to cite it. Kept truthful to what exists: community-contributed,
+// in-progress, CC BY-SA, with the platform as the access point until the first
+// Hugging Face release adds a distribution URL.
+const datasetJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Qor Af-Soomaali — the Unkad Somali Corpus',
+  alternateName: 'Unkad Somali Corpus',
+  description:
+    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Covers nine domains including health, law, education, agriculture, religion, technology, and media, with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
+  url: 'https://www.unkad.com/platform',
+  sameAs: 'https://qor.unkad.com',
+  license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  isAccessibleForFree: true,
+  inLanguage: ['so', 'en'],
+  keywords: [
+    'Somali',
+    'low-resource language',
+    'AI safety evaluation',
+    'AI alignment',
+    'machine translation',
+    'parallel corpus',
+    'community-contributed',
+  ],
+  creator: {
+    '@type': 'ResearchOrganization',
+    name: 'Unkad Labs',
+    url: 'https://www.unkad.com',
+  },
+};
+
 export default function PlatformPage() {
   return (
     <div className="container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }}
+      />
       <h1>The Unkad Platform</h1>
 
       {/* VERIFY SOMALI: campaign name */}

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Research',
+  // The title carries the search phrases this page is the natural home for.
+  // "Research" alone told search engines nothing about what kind.
+  title: 'AI alignment and scalable oversight research for Somali',
   description:
-    'Safety and alignment research for Somali and other low-resource languages: refusal evaluations, safety test sets, red-teaming methodology, and the evaluation infrastructure that does not yet exist.',
+    'Safety and alignment research for Somali and other low-resource languages: scalable oversight, multi-agent debate, LLM judge evaluations, refusal test sets, red-teaming methodology, and the evaluation infrastructure that does not yet exist.',
   alternates: { canonical: '/research' },
   openGraph: {
     siteName: 'Unkad Labs',

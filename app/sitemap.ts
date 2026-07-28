@@ -4,7 +4,7 @@ import { getAllArticles } from '@/lib/articles';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://unkad.com';
+  const base = 'https://www.unkad.com';
 
   const pages = ['', '/research', '/platform', '/about', '/contact', '/articles'].map((path) => ({
     url: `${base}${path}`,
