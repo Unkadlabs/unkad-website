@@ -22,8 +22,10 @@ keywords:
 ---
 
 Today we released [Qor Af-Soomaali v0.1.2](https://huggingface.co/datasets/unkadlabs/qor-af-soomaali),
-an open corpus of 1,547 Somali sentences. Fifty-nine people wrote it, on their
-phones, over eleven days in Mogadishu.
+an open corpus of 1,547 Somali sentences. Seventy-five people wrote and checked
+it on their phones over eleven days, from Muqdisho, Boosaaso, Garoowe,
+Gaalkacyo, Laascaanood, Burco, Berbera, Gabiley, Caabudwaaq, Bay and Hiiraan,
+and from Somali speakers in Ethiopia, Kenya, South Africa and Norway.
 
 That is a small number, and the size is not the point. There is more Somali text
 than that inside CC100, inside OSCAR, inside the multilingual crawls every large
@@ -159,6 +161,13 @@ never existed in English: how frankincense is tapped by cutting the bark and
 returning weeks later for the resin, how a nomadic house is folded onto a camel
 at dawn and raised again by evening, which cup of camel milk goes to the guest
 when the vessel is small.
+
+The geography matters as much as the domains. Contributors wrote from Muqdisho
+and from Boosaaso, from Garoowe, Gaalkacyo, Laascaanood, Burco, Berbera,
+Gabiley, Caabudwaaq, Bay and Hiiraan, and from Somali speakers living in
+Ethiopia, Kenya, South Africa and Norway. Somali written in one city is one
+city's Somali, and a corpus drawn from a single place would quietly encode that
+place as the standard.
 
 ## What is wrong with it
 
