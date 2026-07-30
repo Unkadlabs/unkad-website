@@ -39,7 +39,7 @@ const W = 1080;
 const H = STORY ? 1920 : 1350;
 const PAD = STORY ? 100 : 92;
 
-const INK = '#0B0F22';
+const INK = '#0C1026';
 const PAPER = '#F4EFE4';
 const TEAL = '#4DB6A5';
 const DIM = '#6B7186';
