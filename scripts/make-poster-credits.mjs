@@ -27,6 +27,10 @@ import path from 'path';
 //   node scripts/make-poster-credits.mjs --data /tmp/credits.json
 
 const STORY = process.argv.includes('--story');
+// Somali variant for the community channels. The English card is for a
+// researcher scanning a dataset card; this one is for the people whose names
+// are on it, and the thank-you is the founder's own wording.
+const SO = process.argv.includes('--so');
 const dataIdx = process.argv.indexOf('--data');
 const DATA = JSON.parse(
   fs.readFileSync(dataIdx === -1 ? '/tmp/credits.json' : process.argv[dataIdx + 1], 'utf8')
@@ -34,7 +38,9 @@ const DATA = JSON.parse(
 
 const OUT = path.join(
   process.cwd(), 'public', 'images',
-  STORY ? 'qor-credits-story.png' : 'qor-credits-4x5.png'
+  SO
+    ? (STORY ? 'qor-credits-so-story.png' : 'qor-credits-so-4x5.png')
+    : (STORY ? 'qor-credits-story.png' : 'qor-credits-4x5.png')
 );
 const W = 1080;
 const H = STORY ? 1920 : 1350;
@@ -90,8 +96,11 @@ const FIELD_W = W - PAD * 2;
 // Three columns on 4x5, two on the taller story, with the type sized so the
 // longest name on the roll still holds one line: a poster whose only job is to
 // credit people cannot truncate their names to make the grid work.
-const COLS = STORY ? 2 : 3;
-const NAME_SIZE = STORY ? 25 : 18;
+// Three columns in both formats. Two fitted the square poster's width but not
+// its height, and on the taller story it still ran 67 names straight through
+// the footer rule. Three columns hold every name whole in both.
+const COLS = 3;
+const NAME_SIZE = STORY ? 20 : 18;
 
 const poster = h('div', {
   style: {
@@ -118,15 +127,18 @@ const poster = h('div', {
       fontSize: STORY ? 52 : 44, color: INK, lineHeight: 1.2,
       marginTop: STORY ? 44 : 32, marginBottom: STORY ? 12 : 9,
     },
-  }, 'The people who wrote it'),
+  }, SO ? 'Mahadsanidiin dhamaantiin' : 'The people who wrote it'),
 
   h('div', {
     key: 'sub',
     style: {
-      flexShrink: 0, display: 'flex', flexWrap: 'wrap', fontSize: STORY ? 25 : 22, color: DIM,
+      flexShrink: 0, display: 'flex', flexWrap: 'wrap',
+      fontSize: SO ? (STORY ? 30 : 25) : (STORY ? 25 : 22), color: DIM,
       lineHeight: 1.45, marginBottom: STORY ? 34 : 26,
     },
-  }, `${DATA.total} contributors. Each chose how to appear here, before writing a word.`),
+  }, SO
+      ? 'sida qiimaha leh ee aad ooga qeyb qaadateen inaad jumlado ku biirisan.'
+      : `${DATA.total} contributors. Each chose how to appear here, before writing a word.`),
 
   h('div', {
     key: 'names',
@@ -138,8 +150,8 @@ const poster = h('div', {
     h('div', {
       key: n + i,
       style: {
-        display: 'flex', alignItems: 'center', gap: 10,
-        width: Math.floor(FIELD_W / COLS),
+        display: 'flex', alignItems: 'flex-start', gap: 10,
+        width: Math.floor(FIELD_W / COLS), paddingRight: 12,
       },
     }, [
       h('div', {
@@ -153,8 +165,8 @@ const poster = h('div', {
         key: 't',
         lang: 'so',
         style: {
-          display: 'flex', fontSize: NAME_SIZE, color: INK,
-          whiteSpace: 'nowrap', overflow: 'hidden',
+          display: 'flex', flexWrap: 'wrap', fontSize: NAME_SIZE, color: INK,
+          lineHeight: 1.3,
         },
       }, n),
     ])
@@ -166,7 +178,9 @@ const poster = h('div', {
       flexShrink: 0, display: 'flex', fontSize: STORY ? 24 : 21, color: DIM,
       marginTop: STORY ? 26 : 20, lineHeight: 1.45,
     },
-  }, `and ${DATA.anon} who chose to stay anonymous, counted here and named nowhere.`),
+  }, SO
+      ? `iyo ${DATA.anon} qof oo doortay inaan magacyadooda la qorin.`
+      : `and ${DATA.anon} who chose to stay anonymous, counted here and named nowhere.`),
 
   h('div', {
     key: 'foot',
