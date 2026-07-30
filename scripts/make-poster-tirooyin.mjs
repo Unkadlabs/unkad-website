@@ -19,8 +19,10 @@ import path from 'path';
 // front of a Somali reader. It carries the warm accent for that reason, the only
 // colour on the page that is not the type.
 //
-// Exact brand palette, no drift: ink #0C1026, paper #F4EFE4, teal #4DB6A5 on the
-// seed cell, saffron #E9A13B on the zero.
+// Exact brand palette, taken from the site's own design tokens in
+// app/globals.css rather than from the campaign posters, which had drifted to
+// an indigo and a saffron that appear nowhere in the brand: dark #141312,
+// text #E8E6E1, muted #A5A19A, accent #4DB6A5. One accent colour, used once.
 //
 //   node scripts/make-poster-tirooyin.mjs
 //   node scripts/make-poster-tirooyin.mjs --story
@@ -37,11 +39,10 @@ const W = 1080;
 const H = STORY ? 1920 : 1350;
 const PAD = STORY ? 100 : 92;
 
-const INK = '#0C1026';
-const PAPER = '#F4EFE4';
+const INK = '#141312';
+const PAPER = '#E8E6E1';
 const TEAL = '#4DB6A5';
-const WARM = '#E9A13B';
-const DIM = '#6B7186';
+const DIM = '#A5A19A';
 
 const fonts = [
   {
@@ -59,10 +60,19 @@ const fonts = [
 ];
 
 // !! VERIFY SOMALI !! — three labels, founder to confirm.
+//
+// The third figure was the count of Maay sentences, which is zero. Removed at
+// the founder's direction: dialect is a sensitive subject in Somalia, and a
+// launch poster is the wrong surface to raise it on. The gap is real and still
+// stated in the dataset card and the article, where there is room to explain
+// it, and the community will be invited to fill it in a way he chooses.
+//
+// The goal replaces it, which keeps the forward-looking pull without the
+// sensitivity: these people made this much, and here is where it is going.
 const FIGURES = [
   [CREDITS.total.toLocaleString('en-US'), 'QOF AYAA QORAY', PAPER],
   [SHAPE.sentences.toLocaleString('en-US'), 'JUMLADOOD', PAPER],
-  ['0', 'JUMLADOOD OO AF-MAAY AH', WARM],
+  ['100,000', 'AYAA LA HIIGSANAYAA', TEAL],
 ];
 
 const figure = ([n, label, colour], i) =>
@@ -85,7 +95,7 @@ const figure = ([n, label, colour], i) =>
       lang: 'so',
       style: {
         display: 'flex', fontFamily: 'Norwester', fontSize: STORY ? 25 : 22,
-        color: colour === WARM ? WARM : DIM, letterSpacing: '0.2em',
+        color: colour === TEAL ? TEAL : DIM, letterSpacing: '0.2em',
         lineHeight: 1.5, marginTop: STORY ? 14 : 11,
       },
     }, label),

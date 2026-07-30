@@ -39,10 +39,11 @@ const W = 1080;
 const H = STORY ? 1920 : 1350;
 const PAD = STORY ? 100 : 92;
 
-const INK = '#0C1026';
-const PAPER = '#F4EFE4';
+// Brand tokens from app/globals.css, not the campaign posters' indigo.
+const INK = '#141312';
+const PAPER = '#E8E6E1';
 const TEAL = '#4DB6A5';
-const DIM = '#6B7186';
+const DIM = '#A5A19A';
 
 const SENTENCE = 'Ayeeyo ayaa sheekooyinka ugu fiican ka sheekeysa.';
 const AUTHOR = 'Sharafdin Yusuf';
