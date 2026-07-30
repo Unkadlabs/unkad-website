@@ -43,13 +43,17 @@ const RULE = 'rgba(12,16,38,0.14)';
 // The row on display. Real, accepted, peer-validated and verified; the author
 // chose to be credited by name.
 const ROW = {
-  so: 'Macallinka ayaa xilli dambe haray si uu u caawiyo ardayda casharrada ka dambeeyey',
-  // !! VERIFY SOMALI !! — English gloss for readers outside Somali, founder to confirm.
-  en: 'The teacher stayed late to help the students who had fallen behind.',
-  author: 'Salma Dhegacadde',
-  sector: 'education',
+  // Double space in the stored text is normalised at export, so the published
+  // row reads as it does here.
+  so: 'Hubi isha inta aadan xogta la wadaagin',
+  // Not a translation of ours: this is the English source the contributor was
+  // given, so nothing on this card is a rendering by anyone but the people
+  // named on it.
+  en: 'Check the source before sharing information.',
+  author: 'Cabdikhaaliq',
+  sector: 'media',
   dialect: 'Maxaa-tiri',
-  written: '29 July 2026',
+  written: '27 July 2026',
   validated: 'two contributors, independently',
   verified: 'reviewer sign-off',
   licence: 'CC BY-SA 4.0',
