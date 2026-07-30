@@ -137,7 +137,7 @@ const poster = h('div', {
       lineHeight: 1.45, marginBottom: STORY ? 34 : 26,
     },
   }, SO
-      ? 'sida qiimaha leh ee aad ooga qeyb qaadateen inaad jumlado ku biirisan.'
+      ? 'sida qiimaha leh ee aad ooga qeyb qaadateen inaad jumlado ugu biiriseen.'
       : `${DATA.total} contributors. Each chose how to appear here, before writing a word.`),
 
   h('div', {
