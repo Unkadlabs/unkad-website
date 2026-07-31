@@ -2,7 +2,7 @@
   "name": "unkad-site",
   "version": "2.0.0",
   "private": true,
-  "description": "Website for Unkad Labs — a non-profit AI research laboratory in Mogadishu, Somalia.",
+  "description": "Website for Unkad Labs — a non-profit AI research laboratory.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

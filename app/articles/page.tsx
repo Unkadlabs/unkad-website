@@ -5,7 +5,7 @@ import { getAllArticles, shortDate } from '@/lib/articles';
 export const metadata: Metadata = {
   title: 'Articles',
   description:
-    'Writing from Unkad Labs on Somali language AI, alignment, and building open research infrastructure from Mogadishu.',
+    'Writing from Unkad Labs on Somali language AI, alignment, and building open research infrastructure.',
   alternates: { canonical: '/articles' },
   openGraph: {
     siteName: 'Unkad Labs',

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   // Home keeps the full default title from the layout (no template suffix).
   title: { absolute: 'Unkad Labs · Somali language AI and alignment research' },
   description:
-    'Unkad Labs is a non-profit AI research laboratory in Mogadishu measuring whether AI systems are safe in Somali, and building the open data that safety evaluation requires.',
+    'Unkad Labs is a non-profit AI research laboratory measuring whether AI systems are safe in Somali, and building the open data that safety evaluation requires.',
   alternates: { canonical: '/' },
   openGraph: {
     siteName: 'Unkad Labs',
@@ -33,7 +33,7 @@ export default function HomePage() {
       </div>
 
       <p className="mission">
-        Unkad Labs is a non-profit AI research laboratory in Mogadishu. We measure whether AI
+        Unkad Labs is a non-profit AI research laboratory. We measure whether AI
         systems behave safely in Somali, and we build the open language data that safety
         evaluation requires. Our methods are designed to transfer to the hundreds of languages
         in the same position.

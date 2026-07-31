@@ -1,7 +1,7 @@
 ---
 title: "Unkad: creation from nothing"
 date: "2026-07-19"
-description: "Why we started a lab in Mogadishu to measure whether AI systems are safe in Somali, what the name means, and why safety that only works in English is not safety."
+description: "Why we started a lab to measure whether AI systems are safe in Somali, what the name means, and why safety that only works in English is not safety."
 topics:
   - The lab
   - Safety
@@ -11,7 +11,6 @@ keywords:
   - AI alignment low-resource languages
   - AI safety Somali
   - Somali NLP
-  - Mogadishu AI research
   - Maay dialect
   - safety evaluation
 ---

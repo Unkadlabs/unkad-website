@@ -244,7 +244,7 @@ const poster = h('div', {
     },
   }, [
     h('div', { key: 'a', style: { display: 'flex', color: INK } }, 'HUGGINGFACE.CO/UNKADLABS'),
-    h('div', { key: 'b', style: { display: 'flex', color: DIM } }, 'UNKAD LABS · MOGADISHU'),
+    h('div', { key: 'b', style: { display: 'flex', color: DIM } }, 'UNKAD LABS'),
   ]),
 ]);
 

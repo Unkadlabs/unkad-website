@@ -134,7 +134,7 @@ We pre-registered five hypotheses, an analysis plan, a sample size, and a stoppi
 rule before running anything, and committed that document to the repository first.
 Then we ran the full matrix: three protocols, three access levels, two judges, 300
 samples per cell. 5,400 judgements, all of it on quantised models on a single
-machine in Mogadishu, overnight, with no rented compute.
+machine, overnight, with no rented compute.
 
 Debate's advantage did not vanish. It barely moved.
 

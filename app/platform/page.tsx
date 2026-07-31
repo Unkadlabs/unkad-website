@@ -21,35 +21,78 @@ export const metadata: Metadata = {
 // Dataset structured data. Google Dataset Search is where researchers actually
 // look for corpora, and it only lists pages that carry schema.org/Dataset.
 // A Somali corpus that is invisible there is invisible to the people most
-// likely to cite it. Kept truthful to what exists: community-contributed,
-// in-progress, CC BY-SA, with the platform as the access point until the first
-// Hugging Face release adds a distribution URL.
+// likely to cite it.
+//
+// This was written before the first release and said so — no distribution, the
+// platform as the only access point. v0.1.2 is on Hugging Face now, and a
+// Dataset node without a `distribution` is the one thing Dataset Search
+// downranks hardest: it cannot tell a dataset you can have from a dataset you
+// can read about. Adding the download, the version, the size and the
+// provenance fields is worth more than any keyword change on this page.
+//
+// `creator` points at the Organization declared once in the root layout rather
+// than restating it, so the corpus, the lab, and both domains resolve to one
+// entity graph. No address on it — see the note in app/layout.tsx.
 const datasetJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
+  '@id': 'https://www.unkad.com/platform#dataset',
   name: 'Qor Af-Soomaali — the Unkad Somali Corpus',
-  alternateName: 'Unkad Somali Corpus',
+  alternateName: ['Unkad Somali Corpus', 'Qor Af-Soomaali'],
   description:
-    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Covers nine domains including health, law, education, agriculture, religion, technology, and media, with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
+    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a dialect label, and a validation record — provenance no scraped corpus of any language can supply. Covers nine domains including health, law, education, agriculture, religion, technology, and media, with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
   url: 'https://www.unkad.com/platform',
-  sameAs: 'https://qor.unkad.com',
+  sameAs: [
+    'https://qor.unkad.com',
+    'https://huggingface.co/datasets/unkadlabs/qor-af-soomaali',
+    'https://github.com/Unkadlabs/qor-af-soomaali',
+  ],
   license: 'https://creativecommons.org/licenses/by-sa/4.0/',
   isAccessibleForFree: true,
   inLanguage: ['so', 'en'],
+  version: '0.1.2',
+  datePublished: '2026-07-30',
+  // Collection is ongoing and open-ended; stating an end date would be a claim
+  // that it has stopped.
+  temporalCoverage: '2026-07-19/..',
+  creativeWorkStatus: 'Incomplete',
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      name: 'Qor Af-Soomaali on Hugging Face',
+      encodingFormat: 'application/jsonl',
+      contentUrl: 'https://huggingface.co/datasets/unkadlabs/qor-af-soomaali',
+    },
+  ],
+  measurementTechnique:
+    'Human authorship with informed consent, two independent peer validations per item, and linguist verification before release.',
+  variableMeasured: [
+    'sentence text',
+    'contribution mode',
+    'register',
+    'domain',
+    'dialect',
+    'validation record',
+    'contributor credit choice',
+  ],
   keywords: [
     'Somali',
+    'Af-Soomaali',
     'low-resource language',
     'AI safety evaluation',
     'AI alignment',
+    'multilingual safety',
     'machine translation',
     'parallel corpus',
     'community-contributed',
+    'data provenance',
+    'consent-based data collection',
+    'sentence segmentation',
+    'Maay',
+    'Maxaa-tiri',
   ],
-  creator: {
-    '@type': 'ResearchOrganization',
-    name: 'Unkad Labs',
-    url: 'https://www.unkad.com',
-  },
+  creator: { '@id': 'https://www.unkad.com/#organization' },
+  publisher: { '@id': 'https://www.unkad.com/#organization' },
 };
 
 export default function PlatformPage() {

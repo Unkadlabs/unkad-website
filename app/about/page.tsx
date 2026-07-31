@@ -4,14 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Unkad Labs is a non-profit AI research laboratory in Mogadishu working on multilingual safety: whether the safety properties of AI systems survive a change of language.',
+    'Unkad Labs is a non-profit AI research laboratory working on multilingual safety: whether the safety properties of AI systems survive a change of language.',
   alternates: { canonical: '/about' },
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
     title: 'About · Unkad Labs',
     description:
-      'A non-profit AI research laboratory in Mogadishu working on whether the safety properties of AI systems survive a change of language.',
+      'A non-profit AI research laboratory working on whether the safety properties of AI systems survive a change of language.',
     type: 'website',
     url: '/about',
   },
@@ -30,7 +30,7 @@ export default function AboutPage() {
       </p>
 
       <p>
-        Unkad Labs is a non-profit AI research laboratory in Mogadishu, Somalia. We work on one
+        Unkad Labs is a non-profit AI research laboratory. We work on one
         question: do the safety properties of AI systems survive a change of language?
       </p>
 
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
       <span className="eyebrow">People</span>
       <p>
-        Unkad Labs is run by a small research team in Mogadishu and the Somali diaspora, working
+        Unkad Labs is run by a small Somali research team, at home and in the diaspora, working
         with linguist reviewers who verify the language data our evaluations depend on. A fuller
         team page is coming.
       </p>

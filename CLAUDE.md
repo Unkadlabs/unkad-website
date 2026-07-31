@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-The Unkad Labs website (`unkad.com`) — a non-profit AI research lab in Mogadishu. Next.js App
+The Unkad Labs website (`unkad.com`) — a non-profit AI research lab. Next.js App
 Router, TypeScript, **static export**, one hand-written stylesheet, no CSS framework and no UI
 libraries. Runtime deps are only `next`, `react`, `gray-matter`, `marked`, `@vercel/analytics`.
 
