@@ -2,8 +2,8 @@
 title: "One model reads Somali. The next one approves word salad."
 date: "2026-08-05"
 description: "We gave three open models the easiest version of our community's validation job: tell a real Somali sentence from the same words shuffled. One scored 0.94. One rejected 31% of sentences our validators had already approved. One called scrambled Somali a proper sentence nine times out of ten. Same task, same size class, and no benchmark table would show you the difference."
-hook: "0.94 → 0.54"
-hookLabel: "Balanced accuracy on the same Somali test, best and worst of three open models in the same size class. In English the task was easy for all of them."
+hook: "9 in 10"
+hookLabel: "Bags of scrambled Somali words that an open model called a natural sentence"
 topics:
   - Evaluation
   - Multilingual
