@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200" role="img" aria-label="Unkad Labs">
+  <!--
+    The Unkad mark on a 7s cycle: divide, live, inhale, begin again.
+
+    Exhale — the teal seed divides; the bottom row slides out of it and each
+    arm grows upward one cell at a time, every newborn cell emerging teal and
+    differentiating to ink after it arrives. Hold — the organism stands.
+    Inhale — the cells re-teal and converge back into the seed, outermost
+    first, and the seed swells once as it takes them in. Then it divides
+    again.
+
+    animation-delay cannot express a shared replay across an infinite loop,
+    so the whole timeline is baked into per-generation keyframe percentages.
+    The b custom property is the birth vector (the parent's slot, relative to
+    this cell's own); m is the merge vector (the seed's slot, for the inhale).
+  -->
+  <style>
+    svg { --ink: #141312; --teal: #4DB6A5; }
+    @media (prefers-color-scheme: dark) { svg { --ink: #E8E6E1; } }
+
+    rect { transform-origin: center; transform-box: fill-box;
+           animation-duration: 7s; animation-iteration-count: infinite;
+           animation-timing-function: cubic-bezier(.45,.05,.2,1); }
+
+    .seed { fill: var(--teal); animation-name: seed; }
+    @keyframes seed {
+      0%, 84% { transform: none; }
+      89%     { transform: scale(1.12); }
+      94%, 100% { transform: none; }
+    }
+
+    .c1 { animation-name: gen1; --b: translate(32px, 0);  --m: translate(32px, 0); }
+    .c2 { animation-name: gen1; --b: translate(-32px, 0); --m: translate(-32px, 0); }
+    .c3 { animation-name: gen2; --b: translate(0, 32px);  --m: translate(32px, 32px); }
+    .c4 { animation-name: gen2; --b: translate(0, 32px);  --m: translate(-32px, 32px); }
+    .c5 { animation-name: gen3; --b: translate(0, 32px);  --m: translate(32px, 64px); }
+    .c6 { animation-name: gen3; --b: translate(0, 32px);  --m: translate(-32px, 64px); }
+
+    @keyframes gen1 {
+      0%, 6.9%  { opacity: 0; transform: var(--b) scale(.6); fill: var(--teal); }
+      7%        { opacity: 1; }
+      16%       { transform: none; fill: var(--teal); }
+      22%       { fill: var(--ink); }
+      70%       { opacity: 1; transform: none; fill: var(--ink); }
+      76%       { fill: var(--teal); }
+      81.5%     { opacity: 1; }
+      82%, 100% { opacity: 0; transform: var(--m) scale(.5); fill: var(--teal); }
+    }
+    @keyframes gen2 {
+      0%, 16.9% { opacity: 0; transform: var(--b) scale(.6); fill: var(--teal); }
+      17%       { opacity: 1; }
+      26%       { transform: none; fill: var(--teal); }
+      32%       { fill: var(--ink); }
+      68%       { opacity: 1; transform: none; fill: var(--ink); }
+      74%       { fill: var(--teal); }
+      79.5%     { opacity: 1; }
+      80%, 100% { opacity: 0; transform: var(--m) scale(.5); fill: var(--teal); }
+    }
+    @keyframes gen3 {
+      0%, 26.9% { opacity: 0; transform: var(--b) scale(.6); fill: var(--teal); }
+      27%       { opacity: 1; }
+      36%       { transform: none; fill: var(--teal); }
+      42%       { fill: var(--ink); }
+      66%       { opacity: 1; transform: none; fill: var(--ink); }
+      72%       { fill: var(--teal); }
+      77.5%     { opacity: 1; }
+      78%, 100% { opacity: 0; transform: var(--m) scale(.5); fill: var(--teal); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      rect { animation: none; opacity: 1; fill: var(--ink); }
+      .seed { fill: var(--teal); }
+    }
+  </style>
+
+  <!-- generation-reversed paint order: births stay hidden beneath parents,
+       and the inhale slides everyone under the seed, painted last -->
+  <rect class="c5" x="6"  y="6"  width="24" height="24" rx="6"/>
+  <rect class="c6" x="70" y="6"  width="24" height="24" rx="6"/>
+  <rect class="c3" x="6"  y="38" width="24" height="24" rx="6"/>
+  <rect class="c4" x="70" y="38" width="24" height="24" rx="6"/>
+  <rect class="c1" x="6"  y="70" width="24" height="24" rx="6"/>
+  <rect class="c2" x="70" y="70" width="24" height="24" rx="6"/>
+  <rect class="seed" x="38" y="70" width="24" height="24" rx="6"/>
+</svg>

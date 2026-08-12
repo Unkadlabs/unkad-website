@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200" role="img" aria-label="Unkad Labs">
+  <!--
+    The Unkad mark: cell division.
+
+    The teal seed appears alone, then divides — the bottom row slides out of
+    it, and each arm grows upward one cell at a time. Every newborn cell
+    emerges teal and differentiates to ink only after it arrives: unug
+    multiplying into unkad, creation from nothing told mechanically rather
+    than with a fade.
+
+    Paint order is generation-reversed (grandchildren first, seed last), so
+    every cell is born hidden beneath its parent and the division reads as
+    emergence, not appearance.
+
+    Self-contained CSS; adapts to dark scheme; honours reduced motion.
+  -->
+  <style>
+    svg { --ink: #141312; --teal: #4DB6A5; }
+    @media (prefers-color-scheme: dark) { svg { --ink: #E8E6E1; } }
+
+    rect { fill: var(--ink); transform-origin: center; transform-box: fill-box; }
+
+    .seed {
+      fill: var(--teal);
+      animation: seed-in .5s cubic-bezier(.3,.7,.2,1) both,
+                 breath 4.6s ease-in-out 3.2s infinite;
+    }
+    @keyframes seed-in {
+      from { opacity: 0; transform: scale(.55); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes breath {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: .72; }
+    }
+
+    /* One division: emerge from under the parent, travel to the slot while
+       still teal, then differentiate to ink. Movement owns the first half,
+       identity the second. */
+    .div {
+      opacity: 0;
+      animation: divide 1.3s cubic-bezier(.45,.05,.2,1) both;
+    }
+    @keyframes divide {
+      0%   { opacity: 0; transform: var(--b) scale(.6); fill: var(--teal); }
+      2%   { opacity: 1; }
+      52%  { transform: none; fill: var(--teal); }
+      100% { opacity: 1; transform: none; fill: var(--ink); }
+    }
+
+    /* Birth vectors: where each cell's parent sits, relative to its own slot. */
+    .c1 { --b: translate(32px, 0);  animation-delay: .50s; }
+    .c2 { --b: translate(-32px, 0); animation-delay: .50s; }
+    .c3 { --b: translate(0, 32px);  animation-delay: 1.15s; }
+    .c4 { --b: translate(0, 32px);  animation-delay: 1.15s; }
+    .c5 { --b: translate(0, 32px);  animation-delay: 1.80s; }
+    .c6 { --b: translate(0, 32px);  animation-delay: 1.80s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      rect, .seed, .div { animation: none; opacity: 1; }
+    }
+  </style>
+
+  <!-- generation 3: top of the arms -->
+  <rect class="div c5" x="6"  y="6"  width="24" height="24" rx="6"/>
+  <rect class="div c6" x="70" y="6"  width="24" height="24" rx="6"/>
+  <!-- generation 2 -->
+  <rect class="div c3" x="6"  y="38" width="24" height="24" rx="6"/>
+  <rect class="div c4" x="70" y="38" width="24" height="24" rx="6"/>
+  <!-- generation 1: the bottom row divides out of the seed -->
+  <rect class="div c1" x="6"  y="70" width="24" height="24" rx="6"/>
+  <rect class="div c2" x="70" y="70" width="24" height="24" rx="6"/>
+  <!-- the seed, painted last: everything is born beneath it or its children -->
+  <rect class="seed" x="38" y="70" width="24" height="24" rx="6"/>
+</svg>
