@@ -1742,3 +1742,44 @@ article .post-meta {
 .rv2 .colophon-line a { color: inherit; }
 
 .rv2 .colophon-line a:hover { color: var(--accent); }
+
+/* ---- Mobile overflow fixes ----------------------------------------------
+   A phone screen must never scroll sideways. The three things that were
+   forcing it to: nowrap ticker items, article tables wider than the
+   viewport, and unbreakable inline code. */
+
+@media (max-width: 700px) {
+  /* Ticker items stack: date and tag on the first line, the entry text
+     wrapping freely below them. */
+  .ticker {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+  }
+
+  .ticker .item {
+    display: block;
+    white-space: normal;
+  }
+
+  .ticker .item .tag { margin-left: 0.7rem; }
+
+  .ticker .item a {
+    display: block;
+    margin-top: 0.2rem;
+    line-height: 1.5;
+  }
+
+  /* Tables keep their shape but scroll inside their own box. */
+  .article-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Inline code breaks rather than pushing the page wide. */
+  .article-body code {
+    overflow-wrap: anywhere;
+  }
+}
