@@ -19,15 +19,21 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="container">
-      <h1>About</h1>
-
-      {/* VERIFY SOMALI: name gloss */}
-      <p className="article-lead">
-        <em lang="so">Unkad</em> is Somali for creation from nothing. It shares a root with{' '}
-        <em lang="so">unug</em>, the cell, the smallest unit of a living thing. Large things get
-        built by assembling small units until something holds together.
-      </p>
+    <div className="container rv2">
+      <span className="eyebrow">About &middot; Unkad Labs</span>
+      <div className="hero-split">
+        <h1>
+          <span lang="so">Unkad</span>: creation from nothing.
+        </h1>
+        <div className="hero-aside">
+          {/* VERIFY SOMALI: name gloss */}
+          <p>
+            <em lang="so">Unkad</em> shares a root with <em lang="so">unug</em>, the cell, the
+            smallest unit of a living thing. Large things get built by assembling small units
+            until something holds together.
+          </p>
+        </div>
+      </div>
 
       <p>
         Unkad Labs is a non-profit AI research laboratory. We work on one

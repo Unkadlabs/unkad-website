@@ -1,7 +1,7 @@
 // Shared pieces for build-time Open Graph card generation (next/og).
 // Cards use the dark brand palette so they stand out in feeds, the
-// Source Serif 4 faces in assets/fonts/ (build-time only, never shipped
-// to visitors), and the cell-U mark.
+// Literata faces in assets/fonts/ (build-time only, never shipped to
+// visitors) so cards match the site's reading voice, and the cell-U mark.
 
 import fs from 'fs';
 import path from 'path';
@@ -19,14 +19,14 @@ export function ogFonts() {
   const dir = path.join(process.cwd(), 'assets', 'fonts');
   return [
     {
-      name: 'Source Serif 4',
-      data: fs.readFileSync(path.join(dir, 'SourceSerif4-Regular.otf')),
+      name: 'Literata',
+      data: fs.readFileSync(path.join(dir, 'Literata-Regular.ttf')),
       weight: 400 as const,
       style: 'normal' as const,
     },
     {
-      name: 'Source Serif 4',
-      data: fs.readFileSync(path.join(dir, 'SourceSerif4-Bold.otf')),
+      name: 'Literata',
+      data: fs.readFileSync(path.join(dir, 'Literata-Bold.ttf')),
       weight: 700 as const,
       style: 'normal' as const,
     },

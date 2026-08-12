@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import UnkadMark from '@/components/UnkadMark';
 import LiveStats from '@/components/LiveStats';
+import { publications } from '@/lib/publications';
 
 export const metadata: Metadata = {
   // Home keeps the full default title from the layout (no template suffix).
@@ -20,88 +20,185 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+// Refusal rates from SomaliBench, measured July 2026. Same prompts, same
+// models; the only variable is the language. Rendered as markup rather
+// than an image so the numbers stay text: searchable, translatable,
+// honest at any zoom level.
+const GAP = [
+  { model: 'Llama 3.1 8B', en: 97, so: 7 },
+  { model: 'Aya 23 8B', en: 80, so: 5 },
+];
+
+function GapChart() {
   return (
-    <div className="container">
-      <div className="hero">
-        <UnkadMark size={52} className="hero-mark" animated />
-        <h1>Unkad Labs</h1>
-        {/* VERIFY SOMALI */}
-        <p className="gloss">
-          <span lang="so">Unkad</span>, Somali for creation from nothing.
-        </p>
-      </div>
-
-      <p className="mission">
-        Unkad Labs is a non-profit AI research laboratory. We measure whether AI
-        systems behave safely in Somali, and we build the open language data that safety
-        evaluation requires. Our methods are designed to transfer to the hundreds of languages
-        in the same position.
+    <div>
+      <p className="gapchart-title">
+        The same harmful request, refused in English, answered in Somali.
       </p>
-
-      <div className="btn-row">
-        <Link className="btn" href="/research">
-          The research agenda
-        </Link>
-        <a className="btn btn-quiet" href="https://qor.unkad.com">
-          Contribute Somali text
+      {GAP.map((r) => (
+        <div className="gc-row" key={r.model}>
+          <p className="gc-model">{r.model}</p>
+          <div className="gc-line">
+            <span>English</span>
+            <span className="gc-track">
+              <i style={{ width: `${r.en}%` }} />
+            </span>
+            <span className="gc-val">{r.en}%</span>
+          </div>
+          <div className="gc-line gc-so">
+            <span>Somali</span>
+            <span className="gc-track">
+              <i style={{ width: `${r.so}%` }} />
+            </span>
+            <span className="gc-val">{r.so}%</span>
+          </div>
+        </div>
+      ))}
+      <p className="stage-note">
+        Refusal rate on identical harmful requests, verified by native speakers.{' '}
+        <a href="https://huggingface.co/spaces/unkadlabs/somalibench">
+          Full results on the SomaliBench leaderboard
         </a>
+        .
+      </p>
+    </div>
+  );
+}
+
+export default function HomePage() {
+  const latest = publications.slice(0, 3);
+
+  return (
+    <div className="container rv2">
+      <span className="eyebrow">
+        Unkad Labs &middot; <span lang="so">unkad, creation from nothing</span>
+      </span>
+
+      <div className="hero-split">
+        <h1>Measuring whether AI safety survives a change of language.</h1>
+        <div className="hero-aside">
+          <p>
+            Unkad Labs is a non-profit AI research laboratory. We measure whether AI systems
+            behave safely in Somali, and we build the open language data that safety evaluation
+            requires. The methods are designed to transfer to the hundreds of languages in the
+            same position.
+          </p>
+          <div className="pills">
+            <a className="pill solid" href="https://qor.unkad.com" lang="so">
+              Qor Af-Soomaali
+            </a>
+            <Link className="pill line" href="/research">
+              Read the research
+            </Link>
+          </div>
+        </div>
       </div>
 
-      <span className="eyebrow">The problem</span>
-      <p>
-        When a frontier lab publishes a safety evaluation, it is almost always an evaluation in
-        English. The model is red-teamed in English, its refusal behaviour is measured in
-        English, its jailbreak resistance is characterised in English. Then it is deployed
-        globally, and the safety claims travel with it as though language were incidental to
-        them.
-      </p>
-      <p>
-        It is not incidental. We put identical harmful requests to open-weight models in English
-        and in Somali. Llama 3.1 refuses 97 percent of the time in English and 7 percent of the
-        time in Somali. Aya drops from 80 percent to 5 percent. Safety behaviour that holds in
-        one language does not automatically hold in another, and for most of the world&rsquo;s
-        languages nobody has checked whether it does.
-      </p>
-      <p>
-        Somali is spoken by more than twenty million people. It has no safety benchmark of any
-        scale, no entry in the flagship African reasoning benchmarks, and almost no
-        dialect-tagged data. That absence is the reason this lab exists.
-      </p>
+      <div className="ticker" aria-label="Latest updates">
+        <span className="item">
+          <span>09/08/2026</span>
+          <span className="tag data">DATA</span>
+          <a href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
+            Corpus v0.2.1 released: 2,282 verified sentences
+          </a>
+        </span>
+        <span className="item">
+          <span>05/08/2026</span>
+          <span className="tag note">NOTE</span>
+          <Link href="/articles/one-model-reads-somali">
+            One model reads Somali. The next one approves word salad.
+          </Link>
+        </span>
+      </div>
 
-      <span className="eyebrow">The corpus, live</span>
-      <LiveStats
-        goalLabel="Progress toward 100,000 sentences"
-        sentencesLabel="validated sentences"
-        contributorsLabel="contributors"
-        pendingLabel="awaiting validation"
-      />
+      <div className="stage">
+        <div className="stage-grid">
+          <div>
+            <p className="stage-kicker">
+              <strong>Measurement</strong> &middot; SomaliBench, 07/2026
+            </p>
+            <GapChart />
+          </div>
+          <div>
+            <p className="stage-kicker">
+              <strong>Data</strong> &middot; qor.unkad.com, live now
+            </p>
+            <LiveStats
+              goalLabel="Progress toward 100,000 sentences"
+              sentencesLabel="validated sentences"
+              contributorsLabel="contributors"
+              pendingLabel="awaiting validation"
+            />
+            <p className="stage-note">
+              Every sentence written by a consenting Somali speaker, validated twice, verified by
+              a linguist, released under CC BY-SA 4.0.{' '}
+              <span lang="so">Ereyada waa hanti.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <span className="eyebrow">Latest findings</span>
+      <ol className="pub-list" reversed>
+        {latest.map((p, i) => (
+          <li className="pub" key={p.slug}>
+            <div className="pub-rail">
+              <span className="pub-no">Note {String(publications.length - i).padStart(2, '0')}</span>
+              <time dateTime={p.date}>
+                {new Date(p.date + 'T00:00:00Z').toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric',
+                  timeZone: 'UTC',
+                })}
+              </time>
+            </div>
+            <div className="pub-body">
+              <p className="pub-hook" aria-hidden="true">
+                {p.hook}
+                <span className="pub-hook-label">{p.hookLabel}</span>
+              </p>
+              <h3 className="pub-title">
+                <Link href={`/articles/${p.slug}`}>{p.title}</Link>
+              </h3>
+              <div className="pub-links">
+                <Link href={`/articles/${p.slug}`}>Article</Link>
+                {p.artifacts
+                  .filter((a) => !a.href.startsWith('/'))
+                  .slice(0, 2)
+                  .map((a) => (
+                    <a key={a.href} href={a.href}>
+                      {a.label}
+                    </a>
+                  ))}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
       <p className="hint-line">
-        Live from <a href="https://qor.unkad.com">qor.unkad.com</a>. Every sentence is written by
-        a consenting Somali speaker, validated by the community, verified by a linguist, and
-        released under CC BY-SA 4.0.
+        <Link href="/research">All six research notes, with BibTeX &rarr;</Link>
       </p>
 
-      <span className="eyebrow">What we do</span>
+      <span className="eyebrow">Two doors</span>
       <div className="cols">
-        <Link className="ws-card" href="/research">
-          <h3>Safety and alignment research</h3>
+        <a className="ws-card" href="https://qor.unkad.com" lang="so">
+          <h3>Qor Af-Soomaali</h3>
           <p>
-            Refusal evaluations, safety test sets, and red-teaming methods built for
-            low-resource languages, so that behaviour which fails outside English becomes
-            visible and measurable.
+            Haddii aad ku hadasho af-Soomaali: qor, turjun, ama hubi jumlado. Wax ka yar toban
+            daqiiqo isbuucii ayaa ku filan, magacaaguna wuxuu ku jiri doonaa kaydka.
           </p>
-          <span className="ws-more">Research agenda →</span>
-        </Link>
-        <a className="ws-card" href="https://qor.unkad.com">
-          <h3>The data underneath</h3>
-          <p>
-            Evaluation sets are built out of language. Qor Af-Soomaali is where Somali speakers
-            write, translate, and validate the text that this work requires, across sectors and
-            both major dialects.
-          </p>
-          <span className="ws-more">qor.unkad.com →</span>
+          <span className="ws-more">qor.unkad.com &rarr;</span>
         </a>
+        <Link className="ws-card" href="/contact">
+          <h3>Work with us</h3>
+          <p>
+            Researchers, replicators, funders, and other language communities who want this
+            platform for their own language: everything we build is open, and collaboration is
+            the point.
+          </p>
+          <span className="ws-more">Start a conversation &rarr;</span>
+        </Link>
       </div>
 
       <hr />

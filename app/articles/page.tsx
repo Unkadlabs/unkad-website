@@ -21,10 +21,15 @@ export default function ArticlesIndexPage() {
   const articles = getAllArticles();
 
   return (
-    <div className="container">
-      <h1>Articles</h1>
+    <div className="container rv2">
+      <span className="eyebrow">Articles &middot; Unkad Labs</span>
+      <h1>Everything we write, in the order we learned it.</h1>
+      <p className="article-lead">
+        Research notes with their evidence attached, and the occasional piece about building
+        the lab itself. Failed predictions stay published.
+      </p>
 
-      <ul className="dated-list">
+      <ul className="dated-list rv2-dated">
         {articles.map((article) => (
           <li key={article.slug}>
             <time dateTime={article.date}>{shortDate(article.date)}</time>
@@ -34,6 +39,11 @@ export default function ArticlesIndexPage() {
           </li>
         ))}
       </ul>
+
+      <p className="hint-line">
+        Research notes also live on the <Link href="/research">publications index</Link>, with
+        BibTeX and artifacts.
+      </p>
     </div>
   );
 }

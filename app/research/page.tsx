@@ -1,18 +1,20 @@
 import type { Metadata } from 'next';
+import PublicationsList from '@/components/PublicationsList';
+import { publications } from '@/lib/publications';
 
 export const metadata: Metadata = {
   // The title carries the search phrases this page is the natural home for.
   // "Research" alone told search engines nothing about what kind.
   title: 'AI alignment and scalable oversight research for Somali',
   description:
-    'Safety and alignment research for Somali and other low-resource languages: scalable oversight, multi-agent debate, LLM judge evaluations, refusal test sets, red-teaming methodology, and the evaluation infrastructure that does not yet exist.',
+    'Safety and alignment research for Somali and other low-resource languages: six published research notes with open code and data, refusal evaluations, guard-model failures, LLM judge collapse, and the evaluation infrastructure underneath.',
   alternates: { canonical: '/research' },
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
     title: 'Research · Unkad Labs',
     description:
-      'Refusal evaluations, safety test sets, and red-teaming methodology for Somali and other low-resource languages.',
+      'Six research notes with open code and data: refusal gaps, guard-model failures, judge collapse, and grammaticality evaluation for Somali.',
     type: 'website',
     url: '/research',
   },
@@ -20,13 +22,39 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
   return (
-    <div className="container">
-      <h1>Research</h1>
+    <div className="container rv2">
+      <span className="eyebrow">Research &middot; Unkad Labs</span>
+      <div className="hero-split">
+        <h1>Do the safety properties of AI survive a change of language?</h1>
+        <div className="hero-aside">
+          <p>
+            The question is narrow and, as far as we can tell, largely unasked. We ask it for
+            Somali, with methods designed to transfer.
+          </p>
+          <div className="census">
+            <span className="chip"><strong>6</strong> research notes</span>
+            <span className="chip"><strong>6</strong> open repositories</span>
+            <span className="chip"><strong>2</strong> open datasets</span>
+          </div>
+        </div>
+      </div>
 
-      <p className="article-lead">
-        Our question is narrow and, as far as we can tell, largely unasked: do the safety
-        properties of AI systems survive a change of language?
-      </p>
+      <div className="ticker" aria-label="Latest updates">
+        <span className="item">
+          <span>09/08/2026</span>
+          <span className="tag data">DATA</span>
+          <a href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
+            Corpus v0.2.1 released: 2,282 verified sentences
+          </a>
+        </span>
+        <span className="item">
+          <span>05/08/2026</span>
+          <span className="tag note">NOTE</span>
+          <a href="/articles/one-model-reads-somali">
+            One model reads Somali. The next one approves word salad.
+          </a>
+        </span>
+      </div>
 
       <p>
         Safety behaviour in a language model is learned, not installed. A model refuses harmful
@@ -42,6 +70,39 @@ export default function ResearchPage() {
         system standardised only in 1972. Methods that hold up here have a reasonable chance of
         holding up elsewhere.
       </p>
+
+      <span className="eyebrow">Publications</span>
+      <PublicationsList pubs={publications} />
+
+      <span className="eyebrow">How we work</span>
+      <div className="commitments">
+        <div className="clause">
+          <span className="clause-no">Clause 01</span>
+          <p>
+            Predictions are registered in writing before experiments run, and amendments are
+            dated and state exactly what had been seen when each change was made. Failed
+            predictions are published as failed: two of three failed in{' '}
+            <a href="/articles/one-model-reads-somali">our latest note</a>, one experiment is a
+            published null, and one piece documents a confound we found in our own earlier
+            work.
+          </p>
+        </div>
+        <div className="clause">
+          <span className="clause-no">Clause 02</span>
+          <p>
+            Everything ships with its evidence. Raw judgements, pre-registrations, and analysis
+            code are in each repository above, and the corpus carries per-sentence provenance.
+            A claim you cannot check is not one we ask you to believe.
+          </p>
+        </div>
+        <div className="clause">
+          <span className="clause-no">Clause 03</span>
+          <p>
+            The first peer-reviewed version of this work (SomaliBench) is in preparation for
+            2026, and will be held to the same clauses.
+          </p>
+        </div>
+      </div>
 
       <span className="eyebrow">Current work</span>
 
@@ -102,9 +163,6 @@ export default function ResearchPage() {
           datasets and benchmarks are released under open licences.
         </li>
       </ul>
-
-      <span className="eyebrow">Publications</span>
-      <p className="empty-state">Our first benchmark paper is in preparation (2026).</p>
 
       <span className="eyebrow">Principles</span>
       <ul>

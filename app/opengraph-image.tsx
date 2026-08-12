@@ -21,7 +21,7 @@ export default function OgImage() {
           justifyContent: 'space-between',
           padding: 80,
           backgroundColor: OG_COLORS.bg,
-          fontFamily: 'Source Serif 4',
+          fontFamily: 'Literata',
         }}
       >
         <OgMark size={110} />

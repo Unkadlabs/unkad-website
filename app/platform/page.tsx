@@ -97,53 +97,83 @@ const datasetJsonLd = {
 
 export default function PlatformPage() {
   return (
-    <div className="container">
+    <div className="container rv2">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }}
       />
-      <h1>The Unkad Platform</h1>
-
-      {/* VERIFY SOMALI: campaign name */}
-      <p className="mission" style={{ fontSize: '1.25rem' }}>
-        <span lang="so">Qor Af-Soomaali</span>, meaning write Somali, is where the language data
-        behind our evaluation work gets built, one sentence at a time, by the people who speak
-        it.
-      </p>
-
-      <div className="btn-row">
-        <a className="btn" href="https://qor.unkad.com">
-          Start contributing
-        </a>
+      <span className="eyebrow">The platform &middot; Unkad Labs</span>
+      <div className="hero-split">
+        {/* VERIFY SOMALI: campaign name */}
+        <h1>
+          <span lang="so">Qor Af-Soomaali</span>: the corpus writes itself, one speaker at a
+          time.
+        </h1>
+        <div className="hero-aside">
+          <p>
+            <span lang="so">Qor Af-Soomaali</span>, meaning write Somali, is where the language
+            data behind our evaluation work gets built, by the people who speak it.
+          </p>
+          <div className="pills">
+            <a className="pill solid" href="https://qor.unkad.com" lang="so">
+              Qor Af-Soomaali
+            </a>
+            <a className="pill line" href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
+              The dataset
+            </a>
+          </div>
+        </div>
       </div>
 
-      <LiveStats
-        goalLabel="Progress toward 100,000 sentences"
-        sentencesLabel="validated sentences"
-        contributorsLabel="contributors"
-        pendingLabel="awaiting validation"
-      />
+      <div className="stage">
+        <p className="stage-kicker">
+          <strong>Data</strong> &middot; qor.unkad.com, live now
+        </p>
+        <LiveStats
+          goalLabel="Progress toward 100,000 sentences"
+          sentencesLabel="validated sentences"
+          contributorsLabel="contributors"
+          pendingLabel="awaiting validation"
+        />
+        <p className="stage-note">
+          Every sentence written by a consenting Somali speaker, validated by two community
+          members, verified by a linguist, and released under CC BY-SA 4.0.
+        </p>
+      </div>
 
       <span className="eyebrow">Four ways to contribute</span>
       {/* VERIFY SOMALI: mode names */}
-      <p>
-        <strong lang="so">Qor</strong>, write. Contributors respond to prompts about everyday
-        life: stories, instructions, dialogues, opinions. These are the registers of Somali that
-        never made it onto the web, and they are what evaluation sets need most.
-      </p>
-      <p>
-        <strong lang="so">Turjun</strong>, translate. Short sentences move from English into
-        Somali, producing the parallel data that makes like-for-like evaluation possible.
-      </p>
-      <p>
-        <strong lang="so">Guuri</strong>, transcribe. Openly licensed and public-domain printed
-        Somali is typed up, turning paper heritage into digital text.
-      </p>
-      <p>
-        <strong lang="so">Hubi</strong>, validate. Contributors review each other&rsquo;s work,
-        asking one question: is this correct, natural Somali? It takes seconds and can be done
-        on a phone.
-      </p>
+      <div className="commitments">
+        <div className="clause">
+          <span className="clause-no" lang="so">Qor</span>
+          <p>
+            Write. Contributors respond to prompts about everyday life: stories, instructions,
+            dialogues, opinions. These are the registers of Somali that never made it onto the
+            web, and they are what evaluation sets need most.
+          </p>
+        </div>
+        <div className="clause">
+          <span className="clause-no" lang="so">Turjun</span>
+          <p>
+            Translate. Short sentences move from English into Somali, producing the parallel
+            data that makes like-for-like evaluation possible.
+          </p>
+        </div>
+        <div className="clause">
+          <span className="clause-no" lang="so">Guuri</span>
+          <p>
+            Transcribe. Openly licensed and public-domain printed Somali is typed up, turning
+            paper heritage into digital text.
+          </p>
+        </div>
+        <div className="clause">
+          <span className="clause-no" lang="so">Hubi</span>
+          <p>
+            Validate. Contributors review each other&rsquo;s work, asking one question: is this
+            correct, natural Somali? It takes seconds and can be done on a phone.
+          </p>
+        </div>
+      </div>
 
       <span className="eyebrow">How quality works</span>
       <p>

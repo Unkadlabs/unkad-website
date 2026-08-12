@@ -46,7 +46,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
           // flat rectangle in the feed.
           backgroundImage:
             'radial-gradient(900px 600px at 8% 108%, rgba(77,182,165,0.18), rgba(20,19,18,0) 60%)',
-          fontFamily: 'Source Serif 4',
+          fontFamily: 'Literata',
         }}
       >
         {/* Eyebrow: mark, wordmark, and topic chips */}
