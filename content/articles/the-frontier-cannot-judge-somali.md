@@ -1,7 +1,7 @@
 ---
 title: "The frontier can read Somali. It cannot judge it."
 date: "2026-08-12"
-description: "We showed 593 community-validated Somali submissions to the newest models from OpenAI, Google, and Anthropic and asked the question our volunteers answer every day: is this good Somali, or not? The models placed the texts in the right domain two-thirds of the time. They caught almost none of the bad ones. The whole trial cost five dollars."
+description: "We showed 593 community-validated Somali submissions to the newest models from OpenAI, Google, and Anthropic and asked the question our volunteers answer every day: is this good Somali, or not? The models placed the texts in the right domain two-thirds of the time. They caught almost none of the bad ones."
 hook: "0 / 23"
 hookLabel: "Bad Somali submissions two frontier models caught. Our volunteers caught all 23."
 topics:
