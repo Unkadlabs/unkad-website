@@ -1331,11 +1331,13 @@ article .post-meta {
 /* ---- Small screens ---- */
 
 @media (max-width: 700px) {
+  /* The hairline frame goes, the gutter stays. Text glued to the screen
+     edge reads as broken, not minimal. */
   .rv2 {
     border-left: none;
     border-right: none;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .pub,
