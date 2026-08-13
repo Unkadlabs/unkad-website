@@ -57,11 +57,10 @@ export default function AboutPage() {
         </h2>
         <div className="prose" style={{ marginTop: 'var(--s5)' }}>
           <p>
-            Safety behaviour in a language model is learned from examples, and those examples
-            are overwhelmingly English. When a lab reports that a model refuses harmful
-            requests reliably, that finding was almost certainly established in English. The
-            model is then deployed to people who will not address it in English, and the safety
-            claim travels with the deployment as though language had nothing to do with it.
+            When a lab reports that a model refuses harmful requests reliably, that finding was
+            almost certainly established in English. The model is then deployed to people who
+            will not address it in English, and the safety claim travels with the deployment as
+            though language had nothing to do with it.
           </p>
           <p>
             We measured what actually happens. Putting identical harmful requests to
