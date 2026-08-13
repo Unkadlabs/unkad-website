@@ -129,12 +129,7 @@ export default function PlatformPage() {
         <p className="stage-kicker">
           <strong>Data</strong> &middot; qor.unkad.com, live now
         </p>
-        <LiveStats
-          goalLabel="Progress toward 100,000 sentences"
-          sentencesLabel="validated sentences"
-          contributorsLabel="contributors"
-          pendingLabel="awaiting validation"
-        />
+        <LiveStats version="v0.2.1" />
         <p className="stage-note">
           Every sentence written by a consenting Somali speaker, validated by two community
           members, verified by a linguist, and released under CC BY-SA 4.0.

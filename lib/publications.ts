@@ -37,6 +37,30 @@ function bib(key: string, title: string, year: string, url: string): string {
 
 export const publications: Publication[] = [
   {
+    slug: 'the-frontier-cannot-judge-somali',
+    hook: '0 / 23',
+    hookLabel: 'bad Somali submissions two frontier models caught; volunteers caught all 23',
+    title: 'The frontier can read Somali. It cannot judge it.',
+    date: '2026-08-12',
+    venue: 'Research note',
+    finding:
+      'GPT-5.6, Gemini 3.1 Pro, and Claude Sonnet 5 place community-labeled Somali texts in the right domain 64–70% of the time, but reproduce almost none of the community’s quality rejections (0/23, 0/23, 3/23) while still scoring ~96% agreement — an illusion made of base rates.',
+    artifacts: [
+      { label: 'Article', href: '/articles/the-frontier-cannot-judge-somali' },
+      { label: 'Code + results', href: 'https://github.com/Unkadlabs/qiimeyn' },
+      {
+        label: 'Dataset',
+        href: 'https://huggingface.co/datasets/unkadlabs/qor-af-soomaali',
+      },
+    ],
+    bibtex: bib(
+      '2026qiimeyn',
+      'The frontier can read Somali. It cannot judge it.',
+      '2026',
+      'https://www.unkad.com/articles/the-frontier-cannot-judge-somali'
+    ),
+  },
+  {
     slug: 'one-model-reads-somali',
     hook: '9 in 10',
     hookLabel: 'scrambled Somali sentences one open model accepted as natural',

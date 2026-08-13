@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllArticles, getArticle, longDate } from '@/lib/articles';
+import { publications } from '@/lib/publications';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -38,9 +39,12 @@ export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = getArticle(slug);
 
-  const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent(
-    article.title
-  )}&url=${encodeURIComponent(`https://www.unkad.com/articles/${slug}`)}&via=unkadlabs`;
+  // If this article is a research note, its ledger entry supplies the note
+  // number, artifacts, and citation for the side rail.
+  const pub = publications.find((p) => p.slug === slug);
+  const noteNo = pub
+    ? String(publications.length - publications.indexOf(pub)).padStart(2, '0')
+    : null;
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -83,61 +87,70 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <aside className="article-side">
-        <p className="back-link">
-          <Link href="/articles">← All articles</Link>
-        </p>
-
-        <div className="side-block">
-          <p className="side-meta">
-            <time dateTime={article.date}>{longDate(article.date)}</time>
-          </p>
-          <p className="side-meta">{article.readingMinutes} min read</p>
-        </div>
-
-        {article.topics.length > 0 && (
-          <div className="side-block">
-            <p className="side-head">Topics</p>
-            <div className="chip-row">
-              {article.topics.map((topic) => (
-                <span key={topic} className="chip">
-                  {topic}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {article.headings.length > 1 && (
-          <nav className="side-block toc" aria-label="On this page">
-            <p className="side-head">On this page</p>
-            <ul>
-              {article.headings.map((h) => (
-                <li key={h.id}>
-                  <a href={`#${h.id}`}>{h.text}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-
-        <div className="side-block">
-          <a className="side-share" href={shareUrl}>
-            Share on X →
-          </a>
-        </div>
-      </aside>
-
       <article className="article-main">
-        <h1>{article.title}</h1>
-        <p className="post-meta">
-          <time dateTime={article.date}>{longDate(article.date)}</time> · Unkad Labs ·{' '}
+        <p className="article-kicker">
+          {pub ? `Research note ${noteNo}` : 'Lab essay'} ·{' '}
+          <time dateTime={article.date}>{longDate(article.date)}</time> ·{' '}
           {article.readingMinutes} min read
         </p>
-        <p className="article-lead">{article.description}</p>
+        <h1>{article.title}</h1>
+        <p className="article-dek">{article.description}</p>
+        <p className="article-byline">Unkad Labs</p>
 
         <div className="article-body" dangerouslySetInnerHTML={{ __html: article.html }} />
+
+        <footer className="article-foot">
+          {article.topics.length > 0 && <p>Topics: {article.topics.join(' / ')}</p>}
+          {pub && (
+            <details>
+              <summary>Cite this note (BibTeX)</summary>
+              <pre>{pub.bibtex}</pre>
+            </details>
+          )}
+          <p style={{ marginTop: 'var(--s3)' }}>
+            <Link href="/articles">← All articles</Link>
+          </p>
+        </footer>
       </article>
+
+      <aside className="article-side">
+        <div className="article-side-inner">
+          {article.headings.length > 1 && (
+            <nav className="rail-block toc" aria-label="On this page">
+              <p className="rail-head">On this page</p>
+              <ul>
+                {article.headings.map((h) => (
+                  <li key={h.id}>
+                    <a href={`#${h.id}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {pub && (
+            <div className="rail-block">
+              <p className="rail-head">Evidence</p>
+              <ul>
+                {pub.artifacts
+                  .filter((a) => !a.href.startsWith('/'))
+                  .map((a) => (
+                    <li key={a.href}>
+                      <a href={a.href}>{a.label}</a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
+
+          {pub && (
+            <div className="rail-block">
+              <p className="rail-head">Status</p>
+              <p className="rail-meta">{pub.venue} · not peer-reviewed</p>
+            </div>
+          )}
+        </div>
+      </aside>
     </div>
   );
 }

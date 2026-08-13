@@ -14,56 +14,24 @@ export const metadata: Metadata = {
     template: '%s · Unkad Labs',
   },
   description:
-    'Unkad Labs is a non-profit AI research laboratory measuring whether AI safety survives a change of language. Alignment research, safety evaluations, and open datasets for Somali and other low-resource languages.',
+    'Unkad Labs is an independent AI research lab measuring whether AI safety survives a change of language. Safety evaluations, alignment research, and open datasets for Somali and other low-resource languages.',
   applicationName: 'Unkad Labs',
   authors: [{ name: 'Unkad Labs', url: 'https://unkad.com' }],
   creator: 'Unkad Labs',
   publisher: 'Unkad Labs',
-  // Google has ignored this tag since 2009 and it is kept only because Bing and
-  // several smaller engines still read it. The terms that actually rank live in
-  // the titles, the descriptions, the headings and the structured data below.
   keywords: [
     'Somali NLP',
     'Somali language AI',
-    'Somali AI research',
     'AI alignment',
-    'AI safety',
     'AI safety evaluation',
-    'alignment research',
+    'multilingual AI safety',
     'low-resource languages',
-    'African NLP',
     'Somali dataset',
     'Somali corpus',
-    'Somali machine translation',
-    'Somali benchmarks',
-    'Maay dialect',
-    'Maxaa tiri',
-    'red-teaming low-resource languages',
-    'scalable oversight',
-    'multi-agent debate',
-    'AI debate safety',
-    'LLM judge evaluation',
-    'evaluator-adaptive encoding',
-    'multilingual AI safety',
-    'multilingual alignment',
-    'Somali AI alignment',
-    'Somali LLM',
-    'AI safety Africa',
-    'open datasets',
     'Qor Af-Soomaali',
-    'low-resource language safety',
-    'safety evaluation low-resource languages',
+    'scalable oversight',
     'cross-lingual safety',
-    'cross-lingual generalization safety',
-    'multilingual red-teaming',
-    'multilingual jailbreak',
-    'language transfer safety',
-    'refusal consistency across languages',
-    'non-profit AI safety lab',
-    'open Somali language data',
-    'Af-Soomaali dataset',
-    'Somali sentence segmentation',
-    'Somali evaluation benchmark',
+    'African NLP',
   ],
   robots: {
     index: true,
@@ -74,24 +42,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@unkadlabs',
   },
-  // PLACEHOLDER: after adding the site to Google Search Console, put the
-  // verification token here: verification: { google: '...' },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FCFBF8' },
-    { media: '(prefers-color-scheme: dark)', color: '#141312' },
-  ],
+  themeColor: '#F7F6F1',
 };
-
-// Applies a saved theme before first paint to avoid a flash of the wrong theme.
-const themeInit = `
-try {
-  var t = localStorage.getItem('theme');
-  if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
-} catch (e) {}
-`;
 
 // Organization structured data for search engines.
 //
@@ -107,7 +62,7 @@ try {
 // subject rather than for a place.
 const orgJsonLd = {
   '@context': 'https://schema.org',
-  '@type': ['ResearchOrganization', 'NGO'],
+  '@type': 'ResearchOrganization',
   '@id': 'https://www.unkad.com/#organization',
   name: 'Unkad Labs',
   alternateName: ['Unkad', 'Unkad Labs AI safety'],
@@ -117,7 +72,7 @@ const orgJsonLd = {
     url: 'https://www.unkad.com/icon.svg',
   },
   description:
-    'Non-profit AI research laboratory measuring whether the safety properties of AI systems survive a change of language, and building the open Somali language data that answering the question requires.',
+    'Independent AI research lab measuring whether the safety properties of AI systems survive a change of language, and building the open Somali language data that answering the question requires.',
   foundingDate: '2026',
   knowsLanguage: ['so', 'en'],
   knowsAbout: [
@@ -127,13 +82,11 @@ const orgJsonLd = {
     'Multilingual AI safety',
     'Low-resource languages',
     'Scalable oversight',
-    'Multi-agent debate',
     'Red-teaming',
     'Somali language',
     'Natural language processing',
     'Open datasets',
     'Data provenance',
-    'Sentence boundary detection',
   ],
   sameAs: [
     'https://github.com/Unkadlabs',
@@ -158,11 +111,15 @@ const siteJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // suppressHydrationWarning: the inline script above may set data-theme
-    // on <html> before React hydrates, which is expected.
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <link
+          rel="preload"
+          href="/fonts/SourceSans3VF-Upright.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

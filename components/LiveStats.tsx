@@ -1,24 +1,20 @@
 'use client';
 
-// Live corpus counter, fed by the platform's public stats API.
+// The live corpus record, fed by the platform's public stats API and
+// rendered as a data ledger: one measured line, one scale, a dated note.
 // Renders nothing until data arrives (and nothing at all if the fetch
 // fails), so the static page stays clean without it.
 
 import { useEffect, useState } from 'react';
 
-type Stats = { accepted: number; pending: number; contributors: number; goal: number };
+type Stats = {
+  accepted: number;
+  pending: number;
+  contributors: number;
+  goal: number;
+};
 
-export default function LiveStats({
-  sentencesLabel,
-  contributorsLabel,
-  pendingLabel,
-  goalLabel,
-}: {
-  sentencesLabel: string;
-  contributorsLabel: string;
-  pendingLabel: string;
-  goalLabel: string;
-}) {
+export default function LiveStats({ version }: { version?: string }) {
   const [stats, setStats] = useState<Stats | null>(null);
 
   useEffect(() => {
@@ -31,41 +27,35 @@ export default function LiveStats({
   if (!stats) return null;
 
   const pct = Math.min(100, (stats.accepted / stats.goal) * 100);
+  const today = new Date().toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 
   return (
     <div>
-      <div className="card progress-card">
-        <div className="progress-head">
-          <span className="eyebrow">{goalLabel}</span>
-          <span
-            className="tnum"
-            style={{ fontFamily: 'var(--mono)', fontSize: '0.8rem', color: 'var(--muted)' }}
-          >
-            {stats.accepted.toLocaleString()} / {stats.goal.toLocaleString()}
-          </span>
-        </div>
+      <p className="ledger-line">
+        <span className="tnum">{stats.accepted.toLocaleString()}</span> validated sentences ·{' '}
+        <span className="tnum">{stats.contributors.toLocaleString()}</span> contributors ·{' '}
+        <span className="tnum">{stats.pending.toLocaleString()}</span> awaiting validation
+        {version ? <> · current release {version}</> : null} · live from qor.unkad.com,{' '}
+        {today}
+      </p>
+      <div className="ledger-scale">
         <div
-          className="progress-track"
+          className="ledger-scale-track"
           role="progressbar"
           aria-valuenow={stats.accepted}
           aria-valuemin={0}
           aria-valuemax={stats.goal}
+          aria-label="Progress toward 100,000 validated sentences"
         >
-          <div className="progress-fill" style={{ width: `${Math.max(0.75, pct)}%` }} />
+          <div className="ledger-scale-fill" style={{ width: `${Math.max(0.5, pct)}%` }} />
         </div>
-      </div>
-      <div className="stats">
-        <div className="stat">
-          <span className="n">{stats.accepted.toLocaleString()}</span>
-          <span className="label">{sentencesLabel}</span>
-        </div>
-        <div className="stat">
-          <span className="n">{stats.contributors.toLocaleString()}</span>
-          <span className="label">{contributorsLabel}</span>
-        </div>
-        <div className="stat">
-          <span className="n">{stats.pending.toLocaleString()}</span>
-          <span className="label">{pendingLabel}</span>
+        <div className="ledger-scale-caption">
+          <span>0</span>
+          <span>goal: {stats.goal.toLocaleString()} validated sentences</span>
         </div>
       </div>
     </div>

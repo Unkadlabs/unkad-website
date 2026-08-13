@@ -3,14 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import ThemeToggle from './ThemeToggle';
 import UnkadMark from './UnkadMark';
 
 const links = [
   { href: '/research', label: 'Research' },
-  { href: '/platform', label: 'Platform' },
-  { href: '/about', label: 'About' },
+  { href: '/platform', label: 'Qor' },
   { href: '/articles', label: 'Articles' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -18,8 +17,8 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // The `js` class gates JS-only UI (Menu button, theme toggle) in CSS,
-  // so the exported HTML degrades gracefully when JavaScript is disabled.
+  // The `js` class gates JS-only UI (the mobile menu button) in CSS, so the
+  // exported HTML degrades gracefully when JavaScript is disabled.
   useEffect(() => {
     document.documentElement.classList.add('js');
   }, []);
@@ -37,8 +36,8 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <Link className="wordmark" href="/">
-          <UnkadMark size={15} />
-          Unkad
+          <UnkadMark size={16} />
+          Unkad Labs
         </Link>
         <nav aria-label="Main">
           <button
@@ -47,7 +46,7 @@ export default function Header() {
             aria-controls="site-nav"
             onClick={() => setOpen(!open)}
           >
-            Menu
+            {open ? 'Close' : 'Menu'}
           </button>
           <ul id="site-nav" className={open ? 'nav-list is-open' : 'nav-list'}>
             {links.map((link) => (
@@ -59,7 +58,6 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <ThemeToggle />
       </div>
     </header>
   );
