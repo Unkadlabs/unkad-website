@@ -68,6 +68,3 @@ Creation from nothing is an accurate description of the current state. There is 
 Starting from nothing is not a complaint. It is the reason the work is worth doing, and it is why the unit that matters is the cell: one sentence written down, one contribution validated, one measurement published, until there is something there that was not there before.
 
 If you speak Somali, in any dialect, you can [add to it](https://qor.unkad.com). If you work on multilingual safety or evaluation, we would like to compare notes: research@unkad.com.
-
-<p lang="so" class="muted"><em>[SOMALI TRANSLATION, founders to write: a closing paragraph in Somali summarising the invitation above.]</em></p>
-<!-- VERIFY SOMALI -->

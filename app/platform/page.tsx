@@ -3,16 +3,16 @@ import Link from 'next/link';
 import LiveStats from '@/components/LiveStats';
 
 export const metadata: Metadata = {
-  title: 'The Unkad Platform',
+  title: 'Qor Af-Soomaali: the open Somali corpus',
   description:
-    'Qor Af-Soomaali: where Somali speakers write, translate, and validate the language data that safety evaluation requires. Peer-validated, linguist-verified, openly licensed.',
+    'Qor Af-Soomaali is the community-built Somali corpus behind Unkad Labs research: consented, peer-validated, linguist-verified, dialect-tagged, and released in versioned open datasets.',
   alternates: { canonical: '/platform' },
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
-    title: 'The Unkad Platform · Unkad Labs',
+    title: 'Qor Af-Soomaali · Unkad Labs',
     description:
-      'Qor Af-Soomaali: community-built Somali language data, peer-validated, linguist-verified, openly licensed.',
+      'The community-built Somali corpus: consented, peer-validated, linguist-verified, openly licensed.',
     type: 'website',
     url: '/platform',
   },
@@ -20,16 +20,6 @@ export const metadata: Metadata = {
 
 // Dataset structured data. Google Dataset Search is where researchers actually
 // look for corpora, and it only lists pages that carry schema.org/Dataset.
-// A Somali corpus that is invisible there is invisible to the people most
-// likely to cite it.
-//
-// This was written before the first release and said so — no distribution, the
-// platform as the only access point. v0.1.2 is on Hugging Face now, and a
-// Dataset node without a `distribution` is the one thing Dataset Search
-// downranks hardest: it cannot tell a dataset you can have from a dataset you
-// can read about. Adding the download, the version, the size and the
-// provenance fields is worth more than any keyword change on this page.
-//
 // `creator` points at the Organization declared once in the root layout rather
 // than restating it, so the corpus, the lab, and both domains resolve to one
 // entity graph. No address on it — see the note in app/layout.tsx.
@@ -40,7 +30,7 @@ const datasetJsonLd = {
   name: 'Qor Af-Soomaali — the Unkad Somali Corpus',
   alternateName: ['Unkad Somali Corpus', 'Qor Af-Soomaali'],
   description:
-    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a dialect label, and a validation record — provenance no scraped corpus of any language can supply. Covers nine domains including health, law, education, agriculture, religion, technology, and media, with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
+    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a dialect label, and a validation record. Covers nine domains including health, law, education, agriculture, religion, technology, and media, with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
   url: 'https://www.unkad.com/platform',
   sameAs: [
     'https://qor.unkad.com',
@@ -50,8 +40,9 @@ const datasetJsonLd = {
   license: 'https://creativecommons.org/licenses/by-sa/4.0/',
   isAccessibleForFree: true,
   inLanguage: ['so', 'en'],
-  version: '0.1.2',
+  version: '0.2.1',
   datePublished: '2026-07-30',
+  dateModified: '2026-08-09',
   // Collection is ongoing and open-ended; stating an end date would be a claim
   // that it has stopped.
   temporalCoverage: '2026-07-19/..',
@@ -80,14 +71,9 @@ const datasetJsonLd = {
     'Af-Soomaali',
     'low-resource language',
     'AI safety evaluation',
-    'AI alignment',
-    'multilingual safety',
-    'machine translation',
-    'parallel corpus',
     'community-contributed',
     'data provenance',
     'consent-based data collection',
-    'sentence segmentation',
     'Maay',
     'Maxaa-tiri',
   ],
@@ -95,132 +81,267 @@ const datasetJsonLd = {
   publisher: { '@id': 'https://www.unkad.com/#organization' },
 };
 
+// Real release history, from the platform's releases table. Records are
+// verified passages; each expands into one or more sentences in the dataset.
+const RELEASES = [
+  {
+    version: 'v0.2.1',
+    date: '2026-08-09',
+    records: 268,
+    notes: 'Current release · 2,282 verified sentences',
+  },
+  { version: 'v0.2.0', date: '2026-08-04', records: 235, notes: '' },
+  { version: 'v0.1.2', date: '2026-07-30', records: 124, notes: '' },
+  { version: 'v0.1.1', date: '2026-07-30', records: 124, notes: '' },
+  { version: 'v0.1.0', date: '2026-07-30', records: 124, notes: 'First public release' },
+];
+
+// The contribution modes as they exist on the platform.
+const MODES = [
+  {
+    so: 'Qor',
+    en: 'Write',
+    what: 'Contributors respond to prompts about everyday life — stories, instructions, dialogues, opinions — or write on a topic of their own. These are the registers of Somali that never made it onto the web.',
+  },
+  {
+    so: 'Turjun',
+    en: 'Translate',
+    what: 'Short sentences move from English into Somali, producing the parallel data that makes like-for-like evaluation possible.',
+  },
+  {
+    so: 'Guuri',
+    en: 'Transcribe',
+    what: 'Openly licensed and public-domain printed Somali is typed up, turning paper heritage into digital text.',
+  },
+  {
+    so: 'Hubi',
+    en: 'Validate',
+    what: 'Contributors review each other’s work, asking one question: is this correct, natural Somali? It takes seconds and can be done on a phone.',
+  },
+];
+
+// A representative released record. Field names come from the actual export
+// schema; the values are illustrative of shape, not a real contributor's row.
+const RECORD_EXAMPLE = `{
+  "id": "…",
+  "text_so": "…",            // the Somali text
+  "text_en": null,           // source sentence, translation mode only
+  "meaning_en": null,        // meaning gloss, proverb mode only
+  "mode": "write",           // write | translate | transcribe | proverb
+  "register": "everyday",
+  "sector": "health",        // one of nine domains
+  "topic": null,             // contributor-stated topic, free-writing only
+  "dialect": "maxaa_tiri",   // maxaa_tiri | maay | both | other
+  "verified": true,          // linguist-verified tier
+  "license": "CC BY-SA 4.0",
+  "created_at": "2026-08-09"
+}`;
+
 export default function PlatformPage() {
   return (
-    <div className="container rv2">
+    <div className="container">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }}
       />
-      <span className="eyebrow">The platform &middot; Unkad Labs</span>
-      <div className="hero-split">
-        {/* VERIFY SOMALI: campaign name */}
-        <h1>
-          <span lang="so">Qor Af-Soomaali</span>: the corpus writes itself, one speaker at a
-          time.
-        </h1>
-        <div className="hero-aside">
-          <p>
-            <span lang="so">Qor Af-Soomaali</span>, meaning write Somali, is where the language
-            data behind our evaluation work gets built, by the people who speak it.
-          </p>
-          <div className="pills">
-            <a className="pill solid" href="https://qor.unkad.com" lang="so">
-              Qor Af-Soomaali
-            </a>
-            <a className="pill line" href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
-              The dataset
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <div className="stage">
-        <p className="stage-kicker">
-          <strong>Data</strong> &middot; qor.unkad.com, live now
+      <section className="page-open">
+        <h1 lang="so">Qor Af-Soomaali</h1>
+        <div className="prose">
+          <p>
+            <span lang="so">Qor Af-Soomaali</span> — write Somali — is the data program behind
+            our evaluation research: a community platform where Somali speakers write,
+            translate, transcribe, and validate the language, and a versioned open dataset
+            built from what they make. It exists because safety evaluation has to be built out
+            of language, and for Somali that language had to be created, not scraped.
+          </p>
+        </div>
+        <div className="action-row">
+          <a className="btn" href="https://qor.unkad.com">
+            Contribute on qor.unkad.com
+          </a>
+          <a
+            className="action-link"
+            href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali"
+          >
+            Download the current release →
+          </a>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="h-live">
+        <h2 className="section-head" id="h-live">
+          The corpus today
+        </h2>
+        <div style={{ marginTop: 'var(--s5)' }}>
+          <LiveStats version="v0.2.1" />
+          <p className="ledger-note">
+            Counts update live from the platform. A sentence is counted once two independent
+            community validators accept it; releases additionally require linguist
+            verification.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="h-provenance">
+        <h2 className="section-head" id="h-provenance">
+          How a sentence earns its place
+        </h2>
+        <ol className="flow" style={{ marginTop: 'var(--s5)' }}>
+          <li>
+            <div>
+              <span className="flow-actor">A contributor writes.</span>
+              <p>
+                Before their first sentence, every contributor explicitly consents to the open
+                license and chooses how to be credited: by name, by pseudonym, or anonymously.
+                The item records its mode, register, domain, and the contributor&rsquo;s
+                dialect from the moment it is written.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span className="flow-actor">Two peers validate.</span>
+              <p>
+                Two independent community members judge each submission. Two approvals accept
+                it; two rejections reject it. Nobody validates their own work, and the platform
+                enforces one vote per person per item.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span className="flow-actor">Disagreements escalate.</span>
+              <p>
+                A split vote escalates automatically, and a trusted reviewer&rsquo;s vote
+                settles it. The full validation record stays attached to the item.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span className="flow-actor">A linguist verifies.</span>
+              <p>
+                Community-accepted items pass to linguist reviewers for final sign-off. Only
+                verified items enter official releases.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span className="flow-actor">A versioned release ships.</span>
+              <p>
+                Verified items are exported with their provenance into a versioned dataset on
+                Hugging Face, with an auto-generated dataset card and a credits file honoring
+                each contributor&rsquo;s choice.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section className="section" aria-labelledby="h-modes">
+        <h2 className="section-head" id="h-modes">
+          Four ways to contribute
+        </h2>
+        <ul className="facts" style={{ marginTop: 'var(--s5)' }}>
+          {MODES.map((m) => (
+            <li key={m.so}>
+              <span className="k">
+                <strong lang="so">{m.so}</strong> · {m.en}
+              </span>
+              <span>{m.what}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="section" aria-labelledby="h-record">
+        <h2 className="section-head" id="h-record">
+          What a released record looks like
+        </h2>
+        <div className="prose" style={{ marginTop: 'var(--s5)' }}>
+          <p>
+            Field names below are the dataset&rsquo;s actual schema. The values shown are
+            illustrative; every real record carries a known author, a consent record, and its
+            validation history.
+          </p>
+        </div>
+        <pre style={{ marginTop: 'var(--s4)', maxWidth: '46rem' }}>
+          <code>{RECORD_EXAMPLE}</code>
+        </pre>
+      </section>
+
+      <section className="section" aria-labelledby="h-consent">
+        <h2 className="section-head" id="h-consent">
+          Consent and governance
+        </h2>
+        <div className="prose" style={{ marginTop: 'var(--s5)' }}>
+          <p>
+            Nobody&rsquo;s words enter the corpus without their knowledge. Consent is collected
+            before contribution, not after; credit is the contributor&rsquo;s choice; and
+            account deletion never deletes the consent record attached to already-released
+            work. All data is released under{' '}
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> in
+            versioned datasets, so researchers, developers, and the Somali community itself can
+            build on it without restriction. The full collection policy and dataset
+            documentation live on the{' '}
+            <a href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
+              dataset card
+            </a>{' '}
+            and in the{' '}
+            <a href="https://github.com/Unkadlabs/qor-af-soomaali">platform source</a>, which is
+            open so that any language community can deploy it.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="h-releases">
+        <h2 className="section-head" id="h-releases">
+          Release history
+        </h2>
+        <div className="table-scroll" style={{ marginTop: 'var(--s5)' }}>
+          <table>
+            <thead>
+              <tr>
+                <th>Version</th>
+                <th>Date</th>
+                <th className="num">Verified records</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {RELEASES.map((r) => (
+                <tr key={r.version}>
+                  <td className="mono">{r.version}</td>
+                  <td>{r.date}</td>
+                  <td className="num">{r.records}</td>
+                  <td>{r.notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="meta" style={{ marginTop: 'var(--s4)' }}>
+          All releases:{' '}
+          <a href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
+            huggingface.co/datasets/unkadlabs/qor-af-soomaali
+          </a>
         </p>
-        <LiveStats version="v0.2.1" />
-        <p className="stage-note">
-          Every sentence written by a consenting Somali speaker, validated by two community
-          members, verified by a linguist, and released under CC BY-SA 4.0.
-        </p>
-      </div>
+      </section>
 
-      <span className="eyebrow">Four ways to contribute</span>
-      {/* VERIFY SOMALI: mode names */}
-      <div className="commitments">
-        <div className="clause">
-          <span className="clause-no" lang="so">Qor</span>
+      <section className="section" aria-labelledby="h-partner">
+        <h2 className="section-head" id="h-partner">
+          Working with the program
+        </h2>
+        <div className="prose" style={{ marginTop: 'var(--s5)' }}>
           <p>
-            Write. Contributors respond to prompts about everyday life: stories, instructions,
-            dialogues, opinions. These are the registers of Somali that never made it onto the
-            web, and they are what evaluation sets need most.
+            Universities, schools, and organizations that want to bring their community onto
+            Qor — or take the platform to another language — should{' '}
+            <Link href="/contact">get in touch</Link>.
           </p>
         </div>
-        <div className="clause">
-          <span className="clause-no" lang="so">Turjun</span>
-          <p>
-            Translate. Short sentences move from English into Somali, producing the parallel
-            data that makes like-for-like evaluation possible.
-          </p>
-        </div>
-        <div className="clause">
-          <span className="clause-no" lang="so">Guuri</span>
-          <p>
-            Transcribe. Openly licensed and public-domain printed Somali is typed up, turning
-            paper heritage into digital text.
-          </p>
-        </div>
-        <div className="clause">
-          <span className="clause-no" lang="so">Hubi</span>
-          <p>
-            Validate. Contributors review each other&rsquo;s work, asking one question: is this
-            correct, natural Somali? It takes seconds and can be done on a phone.
-          </p>
-        </div>
-      </div>
-
-      <span className="eyebrow">How quality works</span>
-      <p>
-        Every submission needs agreement from two independent community validators. Items the
-        community accepts then pass to trusted linguist reviewers for final sign-off before they
-        enter the official corpus. Disagreements escalate to reviewers automatically. Every item
-        carries its provenance from the moment it is written: mode, register, sector, and the
-        contributor&rsquo;s dialect, either Maxaa tiri or Maay.
-        {/* VERIFY SOMALI: dialect names */}
-      </p>
-
-      <span className="eyebrow">Consent and openness</span>
-      <p>
-        Before contributing a single sentence, every contributor explicitly agrees to the open
-        license and chooses how to be credited: by name, by pseudonym, or anonymously. All data
-        is released under CC&nbsp;BY-SA&nbsp;4.0 in versioned datasets on{' '}
-        <a href="https://huggingface.co/unkadlabs">Hugging Face</a>, so researchers, developers,
-        and the Somali community itself can build on it without restriction. The corpus belongs
-        to the Somali-speaking world.
-      </p>
-
-      <span className="eyebrow">Current goals</span>
-      <ul>
-        <li>Closed pilot: first cohort of contributors and trusted linguist reviewers.</li>
-        <li>First open dataset release on Hugging Face.</li>
-        <li>The public campaign: 100,000 validated sentences.</li>
-      </ul>
-
-      <hr />
-
-      <p>
-        <strong>Want to partner with us, as a university, school, or organization?</strong> →{' '}
-        <Link href="/contact">Contact</Link>
-      </p>
-
-      {/* Email signup placeholder.
-          To wire this up later, replace the action attribute with either:
-          - Formspree:   action="https://formspree.io/f/YOUR_FORM_ID" method="post"
-          - Buttondown:  action="https://buttondown.com/api/emails/embed-subscribe/YOUR_NEWSLETTER" method="post"
-          No other changes needed. */}
-      <form className="signup" action="#" method="post">
-        <label htmlFor="email">Get updates on releases and the campaign.</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autoComplete="email"
-          placeholder="you@example.com"
-        />
-        <button type="submit">Notify me</button>
-      </form>
+      </section>
     </div>
   );
 }
