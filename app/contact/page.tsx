@@ -79,7 +79,7 @@ export default function ContactPage() {
           Elsewhere: <a href="https://github.com/Unkadlabs">GitHub</a> ·{' '}
           <a href="https://huggingface.co/unkadlabs">Hugging Face</a> ·{' '}
           <a href="https://x.com/unkadlabs">X</a> ·{' '}
-          <a href="https://www.linkedin.com/company/unkadlabs">LinkedIn</a>
+          <a href="https://www.linkedin.com/company/136166625">LinkedIn</a>
         </p>
       </section>
     </div>

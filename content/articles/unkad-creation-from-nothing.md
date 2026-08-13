@@ -15,7 +15,7 @@ keywords:
   - safety evaluation
 ---
 
-In Somali, <em lang="so">unkad</em> means creation from nothing.<!-- VERIFY SOMALI --> It shares a root with <em lang="so">unug</em>, the cell, the smallest unit of a living thing. The pairing describes how we think large things get built: not by arriving whole, but by assembling small units until something holds together.
+In Somali, <em lang="so">unkad</em> means creation from nothing. It shares a root with <em lang="so">unug</em>, the cell, the smallest unit of a living thing. The pairing describes how we think large things get built: not by arriving whole, but by assembling small units until something holds together.
 
 That is what we are attempting for Somali, and it is worth being precise about which part of the problem we have taken on.
 

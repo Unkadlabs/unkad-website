@@ -68,17 +68,12 @@ don't silently rewrite or "correct" Somali copy; flag it instead.
 
 ## Open items (V3 launch state)
 
-All V2 placeholders are resolved: the org URLs and mailboxes are real, the dead newsletter form
-was deleted (add a real backend before reintroducing any form), and the visible Somali
-translation stub was removed. One marker remains:
-
-| Marker | Where |
-|---|---|
-| `VERIFY SOMALI` | `content/articles/unkad-creation-from-nothing.md` — the `unkad`/`unug` etymology gloss awaits founder sign-off |
-
-Founder checks, not code: confirm the LinkedIn company URL by hand (it returns HTTP 999 to
-bots), and that research@/info@ mailboxes are actually monitored. Team is described
-structure-only on About by the founder's decision — do not add names.
+All V2 placeholders are resolved: the org URLs and mailboxes are real and monitored
+(founder-confirmed 2026-08-13), the dead newsletter form was deleted (add a real backend
+before reintroducing any form), the Somali translation stub was removed, and the
+`unkad`/`unug` etymology gloss is founder-verified. Zero markers remain. Team is described
+structure-only on About by the founder's decision — do not add names. The LinkedIn link uses
+the numeric company URL (136166625); a vanity slug can replace it if one is configured.
 
 ## Known rough edges
 
