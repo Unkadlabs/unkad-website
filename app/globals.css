@@ -756,13 +756,18 @@ th.num {
   column-gap: var(--s8);
 }
 
+/* The aside precedes the article in source (so keyboard and screen-reader
+   users reach the contents first); explicit rows keep them side by side —
+   without grid-row: 1 the auto-placement cursor drops the article to row 2. */
 .article-main {
   grid-column: 1;
+  grid-row: 1;
   min-width: 0;
 }
 
 .article-side {
   grid-column: 2;
+  grid-row: 1;
   font-size: 0.9rem;
 }
 
