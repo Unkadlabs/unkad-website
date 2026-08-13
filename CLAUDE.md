@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-The Unkad Labs website (`unkad.com`) — a non-profit AI research lab. Next.js App
+The Unkad Labs website (`unkad.com`) — an independent AI research lab (not yet a
+registered legal entity; never claim non-profit status on the site). Next.js App
 Router, TypeScript, **static export**, one hand-written stylesheet, no CSS framework and no UI
 libraries. Runtime deps are only `next`, `react`, `gray-matter`, `marked`, `@vercel/analytics`.
 
@@ -38,12 +39,16 @@ copy as JSX — there is no CMS and no i18n layer. The only generated content is
   dropping in a markdown file: the filename becomes the slug, and the index, sitemap
   (`app/sitemap.ts`), page metadata, OG image (`app/articles/[slug]/opengraph-image.tsx`), table
   of contents (from `h2`s, ids slugified at build), and reading time all derive from the file.
-  Frontmatter: `title`, `date`, `description`, optional `topics` (display chips), `keywords`
-  (SEO), `image`.
-- `app/globals.css` — the single stylesheet (~1000 lines), design tokens at the top. Dark mode is
-  `prefers-color-scheme` plus a `[data-theme]` manual override that wins in both directions;
-  `app/layout.tsx` pre-paints the saved theme before first paint to avoid a flash. The platform
-  repo shares these tokens (same teal accent, Charter serif, mono apparatus, `--measure: 42rem`).
+  Frontmatter: `title`, `date`, `description`, optional `topics` (rendered as plain metadata,
+  never chips), `keywords` (SEO), `image`. Articles that are research notes also have an entry
+  in `lib/publications.ts`, which supplies the note number, artifacts, and BibTeX.
+- `app/globals.css` — the single stylesheet (~1100 lines), the V3 "research dossier" system:
+  Source Sans 3 for body/UI, Literata only for article titles and prose, IBM Plex Mono only for
+  code/BibTeX/IDs. Light-only (no dark mode in V3), square surfaces (3px radius on controls
+  only), no shadows/pills/chips/cards, hairline rules carry separation. `--measure: 44rem`.
+- `lib/release.ts` — the single source of truth for dataset release facts (current version,
+  release table). A release bump is a one-line edit there; Home, the Qor page table, and the
+  Dataset JSON-LD all derive from it.
 - `components/LiveStats.tsx` — the one client-side data path: fetches
   `https://qor.unkad.com/api/stats` and renders **nothing** if the fetch fails, so the static page
   degrades cleanly. Keep that property.
@@ -61,20 +66,19 @@ Somali passages must be wrapped in `<span lang="so">…</span>` (or `<p lang="so
 with a `<!-- VERIFY SOMALI -->` comment. Founders verify every Somali phrase before it ships —
 don't silently rewrite or "correct" Somali copy; flag it instead.
 
-## Placeholders still open before launch
+## Open items (V3 launch state)
 
-Grep for these; the README table has the full detail:
+All V2 placeholders are resolved: the org URLs and mailboxes are real, the dead newsletter form
+was deleted (add a real backend before reintroducing any form), and the visible Somali
+translation stub was removed. One marker remains:
 
 | Marker | Where |
 |---|---|
-| `[SOMALI TRANSLATION` | `content/articles/unkad-creation-from-nothing.md` closing paragraph |
-| `VERIFY SOMALI` | JSX/markdown comments across pages |
-| `PLACEHOLDER` | GitHub / Hugging Face org URLs, unkad.com mailboxes, non-profit wording |
-| `[X PROFILE URL]`, `[LINKEDIN PROFILE URL]` | `app/contact/page.tsx` |
+| `VERIFY SOMALI` | `content/articles/unkad-creation-from-nothing.md` — the `unkad`/`unug` etymology gloss awaits founder sign-off |
 
-The email signup in `app/platform/page.tsx` still posts to `#`; a comment above the form explains
-swapping in a Formspree or Buttondown endpoint. `app/about/page.tsx` has a "People" placeholder —
-the team section was intentionally removed for now.
+Founder checks, not code: confirm the LinkedIn company URL by hand (it returns HTTP 999 to
+bots), and that research@/info@ mailboxes are actually monitored. Team is described
+structure-only on About by the founder's decision — do not add names.
 
 ## Known rough edges
 

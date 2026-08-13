@@ -13,7 +13,7 @@ app/layout.tsx              Shared shell: <head>, theme pre-paint script, Header
 app/globals.css             The single stylesheet (design tokens at the top)
 app/page.tsx                Home (animated mark, mission, why, workstreams)
 app/research/page.tsx       Research agenda, publications, principles
-app/platform/page.tsx       The Unkad Platform + email signup placeholder
+app/platform/page.tsx       Qor Af-Soomaali: dataset, provenance, releases
 app/about/page.tsx          Name, mission, people, partnerships, non-profit status
 app/contact/page.tsx        Emails and contact guidance
 app/articles/page.tsx       Articles index (generated from content/articles/)
@@ -70,10 +70,8 @@ Grep for these:
 |---|---|---|
 | `[SOMALI TRANSLATION` | `content/articles/unkad-creation-from-nothing.md` | Founders write the closing Somali paragraph |
 | `VERIFY SOMALI` | JSX/markdown comments across pages | Founders verify every Somali phrase (`Unkad` gloss, `unug`, `Ereyada waa hanti`, dialect names) |
-| `PLACEHOLDER` | JSX comments | Confirm GitHub / Hugging Face org URLs, unkad.com mailboxes, non-profit registration wording |
-| `[X PROFILE URL]`, `[LINKEDIN PROFILE URL]` | `app/contact/page.tsx` | Social profiles |
 
-The team section was intentionally removed for now; `app/about/page.tsx` has a "People" placeholder to expand later.
+The About page describes people structure-only (founder decision); the one open marker is the VERIFY SOMALI etymology gloss in the founding article.
 
 ## Wire up the email signup
 

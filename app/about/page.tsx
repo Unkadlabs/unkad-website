@@ -20,17 +20,35 @@ export const metadata: Metadata = {
 // Only real dates. Every entry corresponds to a shipped artifact that can be
 // checked: a dated research note, a dataset release, or the platform itself.
 const TIMELINE = [
-  { date: 'Jul 2026', what: 'Lab founded; SomaliBench measures the English–Somali refusal gap' },
-  { date: '19 Jul 2026', what: 'Qor Af-Soomaali opens; the first corpus sentence is written' },
+  {
+    date: 'Jul 2026',
+    iso: '2026-07',
+    what: 'Lab founded; SomaliBench measures the English–Somali refusal gap',
+  },
+  {
+    date: '19 Jul 2026',
+    iso: '2026-07-19',
+    what: 'Qor Af-Soomaali opens; the first corpus sentence is written',
+  },
   {
     date: '20–26 Jul 2026',
+    iso: '2026-07-20',
     what: 'First four research notes: the token tax, the overseer, the guard collapse, the lie that moved',
   },
-  { date: '30 Jul 2026', what: 'First open dataset release (v0.1.0) on Hugging Face' },
-  { date: '5 Aug 2026', what: 'Grammaticality note: one model reads Somali, another approves word salad' },
-  { date: '9 Aug 2026', what: 'Corpus v0.2.1: 2,282 verified sentences' },
+  {
+    date: '30 Jul 2026',
+    iso: '2026-07-30',
+    what: 'First open dataset release (v0.1.0) on Hugging Face',
+  },
+  {
+    date: '5 Aug 2026',
+    iso: '2026-08-05',
+    what: 'Grammaticality note: one model reads Somali, another approves word salad',
+  },
+  { date: '9 Aug 2026', iso: '2026-08-09', what: 'Corpus v0.2.1: 2,282 verified sentences' },
   {
     date: '12 Aug 2026',
+    iso: '2026-08-12',
     what: 'Frontier evaluation: GPT-5.6, Gemini 3.1 Pro, and Claude Sonnet 5 against the community’s quality judgments',
   },
 ];
@@ -102,14 +120,16 @@ export default function AboutPage() {
           <li>
             <span className="k">Leadership</span>
             <span>
-              Founder-led. A small Somali research team, at home and in the diaspora.
+              Founder-led, with a volunteer community of Somali-speaking contributors and
+              reviewers, at home and in the diaspora.
             </span>
           </li>
           <li>
             <span className="k">Community</span>
             <span>
-              158 contributors write, translate, and peer-validate the corpus; contribution is
-              open to any Somali speaker at <a href="https://qor.unkad.com">qor.unkad.com</a>.
+              Volunteer contributors write, translate, and peer-validate the corpus; the live
+              count is on the <Link href="/platform">Qor page</Link>, and contribution is open
+              to any Somali speaker at <a href="https://qor.unkad.com">qor.unkad.com</a>.
             </span>
           </li>
           <li>
@@ -165,8 +185,10 @@ export default function AboutPage() {
         </h2>
         <ul className="facts" style={{ marginTop: 'var(--s5)' }}>
           {TIMELINE.map((t) => (
-            <li key={t.date + t.what}>
-              <span className="k">{t.date}</span>
+            <li key={t.iso + t.what}>
+              <span className="k">
+                <time dateTime={t.iso}>{t.date}</time>
+              </span>
               <span>{t.what}</span>
             </li>
           ))}

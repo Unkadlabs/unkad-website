@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -40,7 +41,7 @@ export default function ContactPage() {
               <a href="mailto:research@unkad.com">research@unkad.com</a> — collaborations,
               replications, and student programs. Name your institution; every dataset and
               codebase is citable today, and BibTeX is on the{' '}
-              <a href="/research">research page</a>.
+              <Link href="/research">research page</Link>.
             </span>
           </li>
           <li>

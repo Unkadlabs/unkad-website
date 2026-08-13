@@ -49,7 +49,7 @@ export default function LiveStats({ version }: { version?: string }) {
           aria-valuenow={stats.accepted}
           aria-valuemin={0}
           aria-valuemax={stats.goal}
-          aria-label="Progress toward 100,000 validated sentences"
+          aria-label={`Progress toward ${stats.goal.toLocaleString()} validated sentences`}
         >
           <div className="ledger-scale-fill" style={{ width: `${Math.max(0.5, pct)}%` }} />
         </div>

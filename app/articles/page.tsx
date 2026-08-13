@@ -40,7 +40,7 @@ export default function ArticlesIndexPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" aria-label="All articles">
         <div>
           {articles.map((article) => {
             const pub = publications.find((p) => p.slug === article.slug);

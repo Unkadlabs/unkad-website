@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import UnkadMark from './UnkadMark';
 
 const links = [
@@ -16,6 +16,7 @@ const links = [
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // The `js` class gates JS-only UI (the mobile menu button) in CSS, so the
   // exported HTML degrades gracefully when JavaScript is disabled.
@@ -27,6 +28,20 @@ export default function Header() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  // Close on Escape and hand focus back to the toggle, so a keyboard user
+  // whose focus was inside the (now hidden) list doesn't fall to <body>.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
 
   function isCurrent(href: string) {
     return pathname === href || (href !== '/' && pathname.startsWith(href + '/'));
@@ -41,6 +56,7 @@ export default function Header() {
         </Link>
         <nav aria-label="Main">
           <button
+            ref={toggleRef}
             className="menu-toggle"
             aria-expanded={open}
             aria-controls="site-nav"

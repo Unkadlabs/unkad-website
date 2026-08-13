@@ -87,32 +87,6 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <article className="article-main">
-        <p className="article-kicker">
-          {pub ? `Research note ${noteNo}` : 'Lab essay'} ·{' '}
-          <time dateTime={article.date}>{longDate(article.date)}</time> ·{' '}
-          {article.readingMinutes} min read
-        </p>
-        <h1>{article.title}</h1>
-        <p className="article-dek">{article.description}</p>
-        <p className="article-byline">Unkad Labs</p>
-
-        <div className="article-body" dangerouslySetInnerHTML={{ __html: article.html }} />
-
-        <footer className="article-foot">
-          {article.topics.length > 0 && <p>Topics: {article.topics.join(' / ')}</p>}
-          {pub && (
-            <details>
-              <summary>Cite this note (BibTeX)</summary>
-              <pre>{pub.bibtex}</pre>
-            </details>
-          )}
-          <p style={{ marginTop: 'var(--s3)' }}>
-            <Link href="/articles">← All articles</Link>
-          </p>
-        </footer>
-      </article>
-
       <aside className="article-side">
         <div className="article-side-inner">
           {article.headings.length > 1 && (
@@ -151,6 +125,33 @@ export default async function ArticlePage({ params }: Props) {
           )}
         </div>
       </aside>
+
+      <article className="article-main">
+        <p className="article-kicker">
+          {pub ? `Research note ${noteNo}` : 'Lab essay'} ·{' '}
+          <time dateTime={article.date}>{longDate(article.date)}</time> ·{' '}
+          {article.readingMinutes} min read
+        </p>
+        <h1>{article.title}</h1>
+        <p className="article-dek">{article.description}</p>
+        <p className="article-byline">Unkad Labs</p>
+
+        <div className="article-body" dangerouslySetInnerHTML={{ __html: article.html }} />
+
+        <footer className="article-foot">
+          {article.topics.length > 0 && <p>Topics: {article.topics.join(' / ')}</p>}
+          {pub && (
+            <details>
+              <summary>Cite this note (BibTeX)</summary>
+              <pre>{pub.bibtex}</pre>
+            </details>
+          )}
+          <p style={{ marginTop: 'var(--s3)' }}>
+            <Link href="/articles">← All articles</Link>
+          </p>
+        </footer>
+      </article>
+
     </div>
   );
 }

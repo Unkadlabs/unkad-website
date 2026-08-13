@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LiveStats from '@/components/LiveStats';
+import { CURRENT_RELEASE, RELEASES } from '@/lib/release';
 
 export const metadata: Metadata = {
   title: 'Qor Af-Soomaali: the open Somali corpus',
@@ -30,7 +31,7 @@ const datasetJsonLd = {
   name: 'Qor Af-Soomaali — the Unkad Somali Corpus',
   alternateName: ['Unkad Somali Corpus', 'Qor Af-Soomaali'],
   description:
-    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a dialect label, and a validation record. Covers nine domains including health, law, education, agriculture, religion, technology, and media, with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
+    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a dialect label, and a validation record. Covers nine domains — health, education, agriculture, law, media, religion, culture, technology, and general — with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
   url: 'https://www.unkad.com/platform',
   sameAs: [
     'https://qor.unkad.com',
@@ -40,9 +41,9 @@ const datasetJsonLd = {
   license: 'https://creativecommons.org/licenses/by-sa/4.0/',
   isAccessibleForFree: true,
   inLanguage: ['so', 'en'],
-  version: '0.2.1',
+  version: CURRENT_RELEASE.replace(/^v/, ''),
   datePublished: '2026-07-30',
-  dateModified: '2026-08-09',
+  dateModified: RELEASES[0].date,
   // Collection is ongoing and open-ended; stating an end date would be a claim
   // that it has stopped.
   temporalCoverage: '2026-07-19/..',
@@ -80,21 +81,6 @@ const datasetJsonLd = {
   creator: { '@id': 'https://www.unkad.com/#organization' },
   publisher: { '@id': 'https://www.unkad.com/#organization' },
 };
-
-// Real release history, from the platform's releases table. Records are
-// verified passages; each expands into one or more sentences in the dataset.
-const RELEASES = [
-  {
-    version: 'v0.2.1',
-    date: '2026-08-09',
-    records: 268,
-    notes: 'Current release · 2,282 verified sentences',
-  },
-  { version: 'v0.2.0', date: '2026-08-04', records: 235, notes: '' },
-  { version: 'v0.1.2', date: '2026-07-30', records: 124, notes: '' },
-  { version: 'v0.1.1', date: '2026-07-30', records: 124, notes: '' },
-  { version: 'v0.1.0', date: '2026-07-30', records: 124, notes: 'First public release' },
-];
 
 // The contribution modes as they exist on the platform.
 const MODES = [
@@ -174,7 +160,7 @@ export default function PlatformPage() {
           The corpus today
         </h2>
         <div style={{ marginTop: 'var(--s5)' }}>
-          <LiveStats version="v0.2.1" />
+          <LiveStats version={CURRENT_RELEASE} />
           <p className="ledger-note">
             Counts update live from the platform. A sentence is counted once two independent
             community validators accept it; releases additionally require linguist
@@ -316,7 +302,11 @@ export default function PlatformPage() {
                   <td className="mono">{r.version}</td>
                   <td>{r.date}</td>
                   <td className="num">{r.records}</td>
-                  <td>{r.notes}</td>
+                  <td>
+                    {r.version === CURRENT_RELEASE ? 'Current release' : ''}
+                    {r.version === CURRENT_RELEASE && r.notes ? ' · ' : ''}
+                    {r.notes}
+                  </td>
                 </tr>
               ))}
             </tbody>

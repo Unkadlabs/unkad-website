@@ -96,6 +96,16 @@ export function getArticle(slug: string): Article {
     (_m, attrs: string) => `<img ${attrs} loading="lazy" decoding="async">`
   );
 
+  // Tables scroll inside their own region on small screens instead of
+  // widening the page. tabindex makes the scroll container keyboard-reachable;
+  // numbering the labels keeps the landmark menu distinguishable when an
+  // article has several tables.
+  let tableNo = 0;
+  html = html.replace(/<table>[\s\S]*?<\/table>/g, (table) => {
+    tableNo += 1;
+    return `<div class="table-scroll" role="region" tabindex="0" aria-label="Data table ${tableNo}">${table}</div>`;
+  });
+
   const words = content.split(/\s+/).filter(Boolean).length;
 
   return {

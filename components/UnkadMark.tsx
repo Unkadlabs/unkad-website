@@ -38,7 +38,6 @@ export default function UnkadMark({ size = 20, className = '', animated = false 
           y={cell.y}
           width={24}
           height={24}
-          rx={2}
           style={animated ? { animationDelay: `${i * 90}ms` } : undefined}
         />
       ))}

@@ -42,7 +42,7 @@ export default function PublicationsList({ pubs }: { pubs: Publication[] }) {
               )}
             </div>
             <details>
-              <summary>BibTeX</summary>
+              <summary aria-label={`BibTeX for ${p.title}`}>BibTeX</summary>
               <pre>{p.bibtex}</pre>
             </details>
           </div>

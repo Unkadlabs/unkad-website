@@ -2,7 +2,7 @@
   "name": "unkad-site",
   "version": "2.0.0",
   "private": true,
-  "description": "Website for Unkad Labs — a non-profit AI research laboratory.",
+  "description": "Website for Unkad Labs \u2014 an independent AI research lab.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

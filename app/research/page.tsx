@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PublicationsList from '@/components/PublicationsList';
 import { publications } from '@/lib/publications';
 
@@ -7,14 +8,14 @@ export const metadata: Metadata = {
   // "Research" alone told search engines nothing about what kind.
   title: 'AI alignment and scalable oversight research for Somali',
   description:
-    'Safety and alignment research for Somali and other low-resource languages: six published research notes with open code and data, refusal evaluations, guard-model failures, LLM judge collapse, and the evaluation infrastructure underneath.',
+    'Safety and alignment research for Somali and other low-resource languages: seven published research notes with open code and data, refusal evaluations, guard-model failures, LLM judge collapse, and the evaluation infrastructure underneath.',
   alternates: { canonical: '/research' },
   openGraph: {
     siteName: 'Unkad Labs',
     locale: 'en_US',
     title: 'Research · Unkad Labs',
     description:
-      'Six research notes with open code and data: refusal gaps, guard-model failures, judge collapse, and grammaticality evaluation for Somali.',
+      'Seven research notes with open code and data: refusal gaps, guard-model failures, judge collapse, frontier evaluation, and grammaticality evaluation for Somali.',
     type: 'website',
     url: '/research',
   },
@@ -55,7 +56,7 @@ const PROGRAMS = [
     latest:
       'Nine major tokenizers charge Somali 1.5–2.2× the tokens of English for identical content; a Somali-first tokenizer reaches 0.68×.',
     next: 'Whether tokenizer fragmentation contributes independently to the refusal gap, or both are symptoms of data scarcity.',
-    link: { label: 'Method and code', href: 'https://github.com/unkadlabs/somali-token-tax' },
+    link: { label: 'Method and code', href: 'https://github.com/Unkadlabs/somali-token-tax' },
   },
 ];
 
@@ -103,7 +104,11 @@ export default function ResearchPage() {
                   <strong>Open uncertainty.</strong> {prog.next}
                 </p>
                 <div className="record-links">
-                  <a href={prog.link.href}>{prog.link.label}</a>
+                  {prog.link.href.startsWith('/') ? (
+                    <Link href={prog.link.href}>{prog.link.label}</Link>
+                  ) : (
+                    <a href={prog.link.href}>{prog.link.label}</a>
+                  )}
                 </div>
               </div>
             </article>
@@ -134,7 +139,7 @@ export default function ResearchPage() {
             </li>
             <li>
               Failed predictions are published as failed. Two of three failed in{' '}
-              <a href="/articles/one-model-reads-somali">the grammaticality note</a>, one
+              <Link href="/articles/one-model-reads-somali">the grammaticality note</Link>, one
               experiment is a published null, and one piece documents a confound we found in
               our own earlier work.
             </li>
@@ -178,7 +183,7 @@ export default function ResearchPage() {
           </li>
           <li>
             <span className="k">
-              <a href="https://github.com/unkadlabs/awesome-somali-nlp">awesome-somali-nlp</a>
+              <a href="https://github.com/Unkadlabs/awesome-somali-nlp">awesome-somali-nlp</a>
             </span>
             <span>
               An index of what exists for Somali NLP and an honest account of what does not.

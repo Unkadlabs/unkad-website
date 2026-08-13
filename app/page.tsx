@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import LiveStats from '@/components/LiveStats';
 import { publications } from '@/lib/publications';
+import { CURRENT_RELEASE } from '@/lib/release';
 
 export const metadata: Metadata = {
   // Home keeps the full default title from the layout (no template suffix).
@@ -126,7 +127,9 @@ export default function HomePage() {
                 </h3>
                 <p className="record-finding">{p.finding}</p>
                 <div className="record-links">
-                  <Link href={`/articles/${p.slug}`}>Article</Link>
+                  <Link href={`/articles/${p.slug}`} aria-label={`Article: ${p.title}`}>
+                    Article
+                  </Link>
                   {p.artifacts
                     .filter((a) => !a.href.startsWith('/'))
                     .slice(0, 2)
@@ -150,11 +153,12 @@ export default function HomePage() {
           The data program
         </h2>
         <div style={{ marginTop: 'var(--s5)' }}>
-          <LiveStats version="v0.2.1" />
+          <LiveStats version={CURRENT_RELEASE} />
           <p className="ledger-note">
-            Qor Af-Soomaali is the corpus this research depends on: every sentence written by a
-            consenting Somali speaker, peer-validated twice, verified by a linguist, and
-            released with per-sentence provenance under CC BY-SA 4.0.
+            Qor Af-Soomaali is the corpus this research depends on. Every sentence is written
+            by a consenting Somali speaker and accepted by two independent validators;
+            releases additionally require linguist verification, and ship with per-sentence
+            provenance under CC BY-SA 4.0.
           </p>
           <div className="record-links" style={{ marginTop: 'var(--s3)' }}>
             <a href="https://huggingface.co/datasets/unkadlabs/qor-af-soomaali">
