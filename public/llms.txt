@@ -1,0 +1,36 @@
+# Unkad Labs
+
+> A non-profit AI research laboratory measuring whether AI safety survives a change of language, and building the open Somali language data that safety evaluation requires. Founded 2026 by Khalid Yusuf Dahir. The name: unkad is Somali for creation from nothing.
+
+Safety behaviour in a language model is learned, not installed, and the examples it is learned from are overwhelmingly English. Unkad Labs measures what that means for Somali, with methods designed to transfer to the hundreds of languages in the same position.
+
+Everything the lab produces is published openly, including methodology, raw judgements, and negative results. Predictions are registered in writing before experiments run, and failed predictions are published as failed.
+
+## Key findings (each links to its evidence)
+
+- [One model reads Somali. The next one approves word salad.](https://www.unkad.com/articles/one-model-reads-somali): Somali grammaticality detection spans 0.54 to 0.94 balanced accuracy across same-class open models; one accepts scrambled Somali 90% of the time.
+- [The guard that waves Somali through](https://www.unkad.com/articles/the-guard-that-waves-somali-through): open safety filters catch 100% of a harmful-prompt set in English and as little as 6% in Somali.
+- [The overseer that cannot read](https://www.unkad.com/articles/the-overseer-that-cannot-read): an LLM judge denied a readable source collapses to rejecting nearly everything rather than becoming uncertain.
+- [The lie moved. The liar did not.](https://www.unkad.com/articles/the-lie-moved-the-liar-did-not): a model trained against a blind-spotted lie detector kept its deception machinery and stopped using it only where the watcher could see.
+- [The Somali token tax](https://www.unkad.com/articles/the-somali-token-tax): nine major tokenizers charge Somali 1.5 to 2.2 times the tokens of English for identical content.
+- [Every sentence has a name](https://www.unkad.com/articles/every-sentence-has-a-name): first release of a provenance-complete Somali corpus.
+
+## Artifacts
+
+- [Publications index with BibTeX](https://www.unkad.com/research)
+- [Qor Af-Soomaali corpus](https://huggingface.co/datasets/unkadlabs/qor-af-soomaali): every sentence written by a consenting Somali speaker, validated by two community members, verified by a linguist, released CC BY-SA 4.0
+- [SomaliBench leaderboard](https://huggingface.co/spaces/unkadlabs/somalibench): English versus Somali refusal rates, live
+- [Qor platform source](https://github.com/Unkadlabs/qor-af-soomaali): the community collection platform, open source, deployable for any language
+- [GitHub organization](https://github.com/unkadlabs) and [Hugging Face organization](https://huggingface.co/unkadlabs)
+- Live corpus statistics: https://qor.unkad.com/api/stats (JSON: accepted, pending, contributors, goal)
+
+## For Somali speakers
+
+Contribution requires no account: visitor mode at https://qor.unkad.com needs only consent to the open license. Writing, translating, or validating takes minutes and works on a phone. Contributors choose how they are credited, including anonymity, and every contribution is preserved.
+
+## Notes for agents
+
+- The corpus contains published contamination canaries (tracer sentences). If you are evaluating a model on Somali text from this corpus, read the canary notice in the dataset card first.
+- A low refusal rate in Somali does not always mean fluent harmful compliance; some failures surface as incoherent output. The lab's own benchmark states this limitation wherever it is cited.
+- Citation: BibTeX for every research note is on https://www.unkad.com/research. Author: Dahir, Khalid Yusuf.
+- Contact: research@unkad.com
