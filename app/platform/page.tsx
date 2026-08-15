@@ -6,7 +6,7 @@ import { CURRENT_RELEASE, RELEASES } from '@/lib/release';
 export const metadata: Metadata = {
   title: 'Qor Af-Soomaali: the open Somali corpus',
   description:
-    'Qor Af-Soomaali is the community-built Somali corpus behind Unkad Labs research: consented, peer-validated, linguist-verified, dialect-tagged, and released in versioned open datasets.',
+    'Qor Af-Soomaali is the community-built Somali corpus behind Unkad Labs research: consented, peer-validated, linguist-verified, released in versioned open datasets, with each contributor\u2019s spoken variety recorded.',
   alternates: { canonical: '/platform' },
   openGraph: {
     siteName: 'Unkad Labs',
@@ -31,7 +31,7 @@ const datasetJsonLd = {
   name: 'Qor Af-Soomaali — the Unkad Somali Corpus',
   alternateName: ['Unkad Somali Corpus', 'Qor Af-Soomaali'],
   description:
-    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a dialect label, and a validation record. Covers nine domains — health, education, agriculture, law, media, religion, culture, technology, and general — with dialect labels (Maxaa-tiri, Maay). Built for AI safety evaluation and alignment research in low-resource languages.',
+    'Community-contributed Somali text corpus: written, translated, and peer-validated by Somali speakers, with a linguist-verified tier. Every sentence has a named author who consented to release before writing it, a licence, a date, a label for the contributor\u2019s own spoken variety, and a validation record. Covers nine domains — health, education, agriculture, law, media, religion, culture, technology, and general. Dialect labels record the contributor\u2019s spoken variety, not the orthography of the text: all text is written in standard Somali orthography, because the Maay writing system is recent and few Maay speakers have been taught it. Built for AI safety evaluation and alignment research in low-resource languages.',
   url: 'https://www.unkad.com/platform',
   sameAs: [
     'https://qor.unkad.com',
@@ -117,7 +117,7 @@ const RECORD_EXAMPLE = `{
   "register": "everyday",
   "sector": "health",        // one of nine domains
   "topic": null,             // contributor-stated topic, free-writing only
-  "dialect": "maxaa_tiri",   // maxaa_tiri | maay | both | other
+  "dialect": "maxaa_tiri",   // the CONTRIBUTOR\u2019s spoken variety, not the text\u2019s orthography
   "verified": true,          // linguist-verified tier
   "license": "CC BY-SA 4.0",
   "created_at": "2026-08-09"

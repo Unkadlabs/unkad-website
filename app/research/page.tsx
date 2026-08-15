@@ -52,10 +52,10 @@ const PROGRAMS = [
     name: 'Data and representation for low-resource languages',
     question:
       'Which properties of Somali text data — quantity, provenance, tokenization, dialect coverage — limit safety evaluation?',
-    now: 'Building the Qor corpus with per-sentence provenance, measuring tokenizer treatment of Somali, and recording dialect on every collected item.',
+    now: 'Building the Qor corpus with per-sentence provenance, measuring tokenizer treatment of Somali, and recording each contributor\u2019s own spoken variety.',
     latest:
       'Nine major tokenizers charge Somali 1.5–2.2× the tokens of English for identical content; a Somali-first tokenizer reaches 0.68×.',
-    next: 'Whether tokenizer fragmentation contributes independently to the refusal gap, or both are symptoms of data scarcity.',
+    next: 'Whether tokenizer fragmentation contributes independently to the refusal gap, or both are symptoms of data scarcity. A separate limitation we have measured in our own corpus: Maay speakers write in standard Somali orthography, because the Maay writing system is recent and few speakers have been taught it, so dialect-disaggregated evaluation is not yet possible from text alone.',
     link: { label: 'Method and code', href: 'https://github.com/Unkadlabs/somali-token-tax' },
   },
 ];
@@ -167,7 +167,7 @@ export default function ResearchPage() {
               <a href="https://qor.unkad.com">Qor Af-Soomaali</a>
             </span>
             <span>
-              Community platform for building consented, dialect-tagged Somali text with
+              Community platform for building consented, speaker-attributed Somali text with
               two-tier validation. Evaluation sets have to be built out of language; this is
               where the language comes from.
             </span>
