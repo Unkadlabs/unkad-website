@@ -112,12 +112,12 @@ const note = (text) =>
             left: PX + ((Math.log10(p.chars) - X0) / (X1 - X0)) * PW - 64 - 80, width: 160,
             justifyContent: 'center', fontSize: 24, color: DIM,
           },
-        }, p.chars < 1 ? '280K' : `${p.chars}M chars`)
+        }, ({0.28:'42K words',1:'150K',3:'450K',10:'1.5M',19:'2.9M words'})[p.chars])
       ),
       h('div', {
         key: 'flat',
         style: { display: 'flex', position: 'absolute', left: 400, top: PY + 160, fontSize: 26, fontWeight: 700, color: TEAL },
-      }, '66× more data, 0.016 bits: flat'),
+      }, '67× more data, 0.016 bits: flat'),
       h('div', {
         key: 'drop',
         style: {
@@ -180,8 +180,8 @@ const note = (text) =>
 // ---------- plate 5: Unug vs the classical baseline ----------
 {
   const GROUPS = [
-    { label: 'Trained on Qor 280K', ngram: 2.55, unug: 2.30 },
-    { label: 'Trained on wiki 19M', ngram: 2.74, unug: 2.42 },
+    { label: 'Trained on Qor · 43K words', ngram: 2.55, unug: 2.30 },
+    { label: 'Trained on wiki · 2.9M words', ngram: 2.74, unug: 2.42 },
     { label: 'The recipe: wiki, then Qor', ngram: null, unug: 2.10 },
   ];
   const BARW = 950, MAX = 3.0;

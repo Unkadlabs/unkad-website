@@ -116,15 +116,15 @@ async function render(el, out) {
           },
         }, s === 0 ? '0' : `${s / 1000}k steps`)
       ),
-      label(730, PY + 398, '280K chars · Qor corpus', RUST, true),
+      label(730, PY + 398, '43K words · Qor corpus', RUST, true),
       label(730, PY + 436, 'floor 2.30, then it memorizes and gets worse', DIM, false),
-      label(920, PY + 118, '19M chars · Somali Wikipedia', TEAL, true),
+      label(920, PY + 118, '2.9M words · Somali Wikipedia', TEAL, true),
       label(920, PY + 160, 'still falling when we stopped · 2.42', DIM, false),
     ]),
     h('div', {
       key: 'note',
       style: { display: 'flex', marginTop: 20, fontSize: 24, color: DIM, lineHeight: 1.5 },
-    }, 'Unug, 873K parameters, 15,000 steps, one MacBook. A small corpus hits its floor and then overtraining makes it worse. 66× more text keeps improving the whole way, with no wall in sight.'),
+    }, 'Unug, 873K parameters, 15,000 steps, one MacBook. A small corpus hits its floor and then overtraining makes it worse. 67× more words keep improving the whole way, with no wall in sight.'),
   ]);
   await render(plate, 'fig-unug-wall.png');
 }
@@ -132,8 +132,8 @@ async function render(el, out) {
 // ---------- plate 2: the recipe ----------
 {
   const ROWS = [
-    { label: 'Qor community corpus only', sub: '280K chars, the consent layer', val: 2.303, color: DIM },
-    { label: 'Somali Wikipedia only', sub: '19M chars, the web layer', val: 2.421, color: DIM },
+    { label: 'Qor community corpus only', sub: '43K words, the consent layer', val: 2.303, color: DIM },
+    { label: 'Somali Wikipedia only', sub: '2.9M words, the web layer', val: 2.421, color: DIM },
     { label: 'Wikipedia first, then Qor', sub: 'pretrain the web, finetune the consent layer', val: 2.1, color: TEAL },
   ];
   const MAX = 2.6, BARW = 900;
