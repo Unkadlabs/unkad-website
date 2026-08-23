@@ -9,12 +9,12 @@ import path from 'path';
 //   node scripts/make-figures-ladder.mjs
 
 const W = 1600, H = 900;
-const PAPER = '#FCFBF8';
-const INK = '#171715';
-const TEAL = '#0F6B5C';
+const PAPER = '#F2EDE3';
+const INK = '#0C1026';
+const TEAL = '#12917B';
 const RUST = '#A63C2C';
-const DIM = '#8A867E';
-const RULE = 'rgba(23,23,21,0.12)';
+const DIM = '#8A8577';
+const RULE = 'rgba(12,16,38,0.16)';
 
 const SERIF_DIR = path.join(process.cwd(), '..', 'unkad-platform', 'assets', 'fonts');
 const fonts = [
@@ -126,15 +126,15 @@ async function render(el, out) {
       style: { display: 'flex', marginTop: 20, fontSize: 24, color: DIM, lineHeight: 1.5 },
     }, 'Unug, 873K parameters, 15,000 steps, one MacBook. A small corpus hits its floor and then overtraining makes it worse. 67× more words keep improving the whole way, with no wall in sight.'),
   ]);
-  await render(plate, 'fig-unug-wall.png');
+  await render(plate, 'fig-unug-wall-so.png');
 }
 
 // ---------- plate 2: the recipe ----------
 {
   const ROWS = [
-    { label: 'Qor community corpus only', sub: '43K words, the consent layer', val: 2.303, color: DIM },
-    { label: 'Somali Wikipedia only', sub: '2.9M words, the web layer', val: 2.421, color: DIM },
-    { label: 'Wikipedia first, then Qor', sub: 'pretrain the web, finetune the consent layer', val: 2.13, color: TEAL },
+    { label: 'Jumladaha qor.unkad.com oo kaliya', sub: '43 kun oo erey, xogta la oggolaaday', val: 2.303, color: DIM },
+    { label: 'Wikipedia Soomaaliga oo kaliya', sub: '2.9 milyan erey, xogta internetka', val: 2.421, color: DIM },
+    { label: 'Marka hore Wikipedia, kadibna Qor', sub: 'internetka horay u baro, kadib xogta bulshada', val: 2.13, color: TEAL },
   ];
   const MAX = 2.6, BARW = 900;
 
@@ -147,11 +147,11 @@ async function render(el, out) {
     h('div', {
       key: 't',
       style: { display: 'flex', fontFamily: 'Norwester', fontSize: 22, color: TEAL, letterSpacing: '0.18em', lineHeight: 1.4 },
-    }, 'THE RECIPE WORKS'),
+    }, 'HABKA SHAQEEYAY'),
     h('div', {
       key: 's',
       style: { display: 'flex', fontSize: 26, color: DIM, marginTop: 14, marginBottom: 40 },
-    }, 'Loss on held-out community sentences (bits per character). Lower is better. Same model, same budget.'),
+    }, 'Khaladaadka jumladaha qor.unkad.com ee la kaydiyay (bits per character). oo ka tira yar ayaa fiicnaaday. Isla moodel, isla miisaaniyad.'),
     ...ROWS.map((r, i) =>
       h('div', { key: `r${i}`, style: { display: 'flex', flexDirection: 'column', marginBottom: 44 } }, [
         h('div', { key: 'l', style: { display: 'flex', alignItems: 'baseline', gap: 16 } }, [
@@ -173,14 +173,14 @@ async function render(el, out) {
           i === 2 && h('div', {
             key: 'w',
             style: { display: 'flex', marginLeft: 20, fontSize: 26, color: TEAL, fontWeight: 700 },
-          }, 'best of everything'),
+          }, 'tan ugu fiican'),
         ].filter(Boolean)),
       ])
     ),
     h('div', {
       key: 'note',
       style: { display: 'flex', marginTop: 8, fontSize: 24, color: DIM, lineHeight: 1.5 },
-    }, 'The wiki-pretrained model finetuned on Qor beats both of its parents, and 88% of the words it writes are real Somali, the highest of every model we have trained. This is the Unug-1 plan, proven in miniature: the web layer teaches the language, the consented Qor layer teaches it to speak like the community.'),
+    }, 'Moodelka Wikipedia lagu tababaray kadibna Qor lagu saxay wuu ka fiican yahay labadii hore, 88% ereyada uu qorayna waa Soomaali sax ah, taasoo ah tan ugu sarreysa ee aan cabbirnay.'),
   ]);
-  await render(plate, 'fig-unug-recipe.png');
+  await render(plate, 'fig-unug-recipe-so.png');
 }

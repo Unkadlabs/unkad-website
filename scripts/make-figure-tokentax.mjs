@@ -10,11 +10,11 @@ import path from 'path';
 //   node scripts/make-figure-tokentax.mjs
 
 const W = 1600, H = 900;
-const PAPER = '#F2EDE3';
-const INK = '#0C1026';
-const TEAL = '#12917B';
+const PAPER = '#FCFBF8';
+const INK = '#171715';
+const TEAL = '#0F6B5C';
 const RUST = '#A63C2C';
-const DIM = '#8A8577';
+const DIM = '#8A867E';
 
 const SERIF_DIR = path.join(process.cwd(), '..', 'unkad-platform', 'assets', 'fonts');
 const fonts = [

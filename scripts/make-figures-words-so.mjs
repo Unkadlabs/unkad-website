@@ -9,12 +9,12 @@ import path from 'path';
 //   node scripts/make-figures-ladder2.mjs
 
 const W = 1600, H = 900;
-const PAPER = '#FCFBF8';
-const INK = '#171715';
-const TEAL = '#0F6B5C';
+const PAPER = '#F2EDE3';
+const INK = '#0C1026';
+const TEAL = '#12917B';
 const RUST = '#A63C2C';
-const DIM = '#8A867E';
-const RULE = 'rgba(23,23,21,0.12)';
+const DIM = '#8A8577';
+const RULE = 'rgba(12,16,38,0.16)';
 
 const SERIF_DIR = path.join(process.cwd(), '..', 'unkad-platform', 'assets', 'fonts');
 const fonts = [
@@ -131,15 +131,15 @@ const note = (text) =>
     ]),
     note('Every 3,000-step run was still improving when it hit the step limit. The bottleneck was never the data: it was training compute. Data, parameters, and steps must grow together, which is exactly how Unug-1 is planned.'),
   ]);
-  await render(plate, 'fig-unug-flat.png');
+  await render(plate, 'fig-unug-flat-so.png');
 }
 
 // ---------- plate 4: the real-word climb ----------
 {
   const ROWS = [
-    { label: 'Unug-0', sub: 'Qor corpus, 3,000 steps', val: 70.7, color: DIM },
-    { label: '5× the training', sub: 'same corpus, 15,000 steps', val: 82.0, color: DIM },
-    { label: 'The recipe', sub: 'wiki pretrain, then Qor finetune', val: 88.2, color: TEAL },
+    { label: 'Unug-0', sub: 'jumladaha Qor, 3,000 tallaabo', val: 70.7, color: DIM },
+    { label: 'Tababar 5 jibbaar ah', sub: 'isla xogta, 15,000 tallaabo', val: 82.0, color: DIM },
+    { label: 'Habka shaqeeyay', sub: 'Wikipedia horay, kadibna Qor', val: 88.2, color: TEAL },
   ];
   const BARW = 1080;
 
@@ -149,7 +149,7 @@ const note = (text) =>
       padding: 64, backgroundColor: PAPER, fontFamily: 'Source Serif 4',
     },
   }, [
-    ...header('MORE REAL SOMALI EVERY STEP', 'Share of generated words that are real Somali words, 20 samples per model, unretouched output.'),
+    ...header('TALLAABO KASTA, WAXAAN U DHAWNAHAY SOOMAALI SAXAN', 'sidee ayay ugu soo kala muuqdeen midka qorayo somali saxan. 20 tijaabo moodelkiiba, oo aan wax laga bedelin.'),
     h('div', { key: 'sp', style: { display: 'flex', height: 40 } }),
     ...ROWS.map((r, i) =>
       h('div', { key: `r${i}`, style: { display: 'flex', flexDirection: 'column', marginBottom: 46 } }, [
@@ -172,9 +172,9 @@ const note = (text) =>
         ]),
       ])
     ),
-    note('Word validity is checked against a frequency-filtered lexicon from 2.9M words of Somali text. Meaning still lags far behind: these are real words in grammatical order, not yet true statements. Closing that gap is the job of Unug-1.'),
+    note('Ereyadan waxa laga hubiyay keyd laga soo saaray 2.9 milyan oo eray oo Soomaali ah. Macnuhuna weli wuu ka dambeeyaa: eraydan hada waxay u muuqdan erayo saxa oo somali ah, laakiin weli ma aha hadal macne buuxa leh. Taasina waa shaqada iyo Model kena xiga ee Unug-1.'),
   ]);
-  await render(plate, 'fig-unug-words.png');
+  await render(plate, 'fig-unug-words-so.png');
 }
 
 // ---------- plate 5: Unug vs the classical baseline ----------
@@ -222,5 +222,5 @@ const note = (text) =>
     ),
     note('A 5-gram model just memorizes short character patterns; guessing uniformly at random would cost 11.4 bits. Unug beats the classical baseline on every corpus, and the recipe model wins by 0.42 bits per character.'),
   ]);
-  await render(plate, 'fig-unug-baselines.png');
+  await render(plate, 'fig-unug-baselines-so.png');
 }
