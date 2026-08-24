@@ -10,7 +10,7 @@ import path from 'path';
 //   node scripts/make-figure-tokenizer.mjs
 
 const W = 1600, H = 940;
-const PAPER = '#FCFBF8';
+const PAPER = '#FFFFFF';
 const INK = '#171715';
 const TEAL = '#0F6B5C';
 const RUST = '#A63C2C';
@@ -74,7 +74,7 @@ const plate = h('div', {
     abs(PX + PW - 64 - 300, sy(GPT) - 34, 'GPT-4o (200k vocab): 3.28', RUST, 21, true),
   ]),
   h('div', { key: 'note', style: { display: 'flex', marginTop: 18, fontSize: 23, color: DIM, lineHeight: 1.5 } },
-    'Labels show the embedding-table cost at Unug-1’s hidden size. Bigger vocab compresses better but the gain per million parameters collapses after 16k (0.47 → 0.24 → 0.11 → 0.04). At 16k, Somali already compresses 37% better than GPT-4o’s 200k-token vocabulary, for a table a 30–50M model can afford. Unug-1 ships BPE-16K.'),
+    'Labels show the embedding-table cost at Unug-1’s hidden size. Bigger vocab compresses better but the gain per million parameters collapses after 16k (0.47 → 0.24 → 0.11 → 0.04). At 16k, Somali already compresses 37% better than GPT-4o’s 200k-token vocabulary, for a table a 30-50M model can afford. Unug-1 ships BPE-16K.'),
 ]);
 
 const res = new ImageResponse(plate, { width: W, height: H, fonts });
