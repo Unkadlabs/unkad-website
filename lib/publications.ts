@@ -37,6 +37,26 @@ function bib(key: string, title: string, year: string, url: string): string {
 
 export const publications: Publication[] = [
   {
+    slug: 'the-model-was-guessing',
+    hook: '0 of 7',
+    hookLabel: 'harmful Somali requests Llama 3.1 went along with that it had actually understood',
+    title: 'It did not say yes. It did not understand the question.',
+    date: '2026-09-23',
+    venue: 'Research note',
+    finding:
+      'Pre-registered, four open models: when they go along with harmful Somali requests they mostly have not understood them (Llama 3.1: 0 of 7). Only Gemma 2 reads Somali well enough to show knowing compliance, about one in five. Asking for an English restatement first raises refusals for three of four models.',
+    artifacts: [
+      { label: 'Article', href: '/articles/the-model-was-guessing' },
+      { label: 'Earlier paper', href: 'https://arxiv.org/abs/2605.25420' },
+    ],
+    bibtex: bib(
+      '2026knowingdoing',
+      'It did not say yes. It did not understand the question.',
+      '2026',
+      'https://www.unkad.com/articles/the-model-was-guessing'
+    ),
+  },
+  {
     slug: 'the-frontier-cannot-judge-somali',
     hook: '0 / 23',
     hookLabel: 'bad Somali submissions two frontier models caught; volunteers caught all 23',
