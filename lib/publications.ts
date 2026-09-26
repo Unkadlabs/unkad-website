@@ -37,6 +37,25 @@ function bib(key: string, title: string, year: string, url: string): string {
 
 export const publications: Publication[] = [
   {
+    slug: 'invisible-rules-survey',
+    hook: '0 / 28,796',
+    hookLabel: 'public AI agent rule files hiding instructions from the humans who review them',
+    title: 'We looked for hidden instructions in 28,796 AI rule files. We found none.',
+    date: '2026-09-26',
+    venue: 'Research note',
+    finding:
+      'Field survey of 28,796 public GitHub rule files read by coding agents (.cursorrules, AGENTS.md, CLAUDE.md and five more): no invisible-Unicode instruction attacks outside one planted test case, bounding the rate below 1 in 9,600 in the popular, search-ranked population with 95% confidence.',
+    artifacts: [
+      { label: 'Article', href: '/articles/invisible-rules-survey' },
+    ],
+    bibtex: bib(
+      '2026invisiblerules',
+      'We looked for hidden instructions in 28,796 AI rule files. We found none.',
+      '2026',
+      'https://www.unkad.com/articles/invisible-rules-survey'
+    ),
+  },
+  {
     slug: 'the-model-was-guessing',
     hook: '0 of 7',
     hookLabel: 'harmful Somali requests Llama 3.1 went along with that it had actually understood',
