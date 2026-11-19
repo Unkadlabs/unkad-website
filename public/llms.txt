@@ -1,6 +1,6 @@
 # Unkad Labs
 
-> A non-profit AI research laboratory measuring whether AI safety survives a change of language, and building the open Somali language data that safety evaluation requires. Founded 2026 by Khalid Yusuf Dahir. The name: unkad is Somali for creation from nothing.
+> An independent Somali AI research lab measuring whether AI safety survives a change of language, and building the open Somali language data that safety evaluation requires. Founded 2026 by Khalid Yusuf Dahir. The name: unkad is Somali for creation from nothing.
 
 Safety behaviour in a language model is learned, not installed, and the examples it is learned from are overwhelmingly English. Unkad Labs measures what that means for Somali, with methods designed to transfer to the hundreds of languages in the same position.
 

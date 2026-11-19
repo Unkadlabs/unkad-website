@@ -14,7 +14,7 @@ app/globals.css             The single stylesheet (design tokens at the top)
 app/page.tsx                Home (animated mark, mission, why, workstreams)
 app/research/page.tsx       Research agenda, publications, principles
 app/platform/page.tsx       Qor Af-Soomaali: dataset, provenance, releases
-app/about/page.tsx          Name, mission, people, partnerships, non-profit status
+app/about/page.tsx          Name, mission, people, partnerships
 app/contact/page.tsx        Emails and contact guidance
 app/articles/page.tsx       Articles index (generated from content/articles/)
 app/articles/[slug]/        Article renderer (markdown → HTML at build time)
