@@ -52,7 +52,6 @@ copy as JSX — there is no CMS and no i18n layer. The only generated content is
 - `components/LiveStats.tsx` — the one client-side data path: fetches
   `https://qor.unkad.com/api/stats` and renders **nothing** if the fetch fails, so the static page
   degrades cleanly. Keep that property.
-- `static-site/` — the original Dhig Labs hand-written HTML site, preserved for reference only.
   Not built, not deployed.
 - `docs/` — prospectus, strategy, experiment designs, and article drafts. Substantive research
   planning lives here, not in code.

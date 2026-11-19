@@ -4,7 +4,7 @@ Website for [unkad.com](https://unkad.com), built with Next.js (App Router, Type
 
 *Unkad* — Somali for creation from nothing; it shares a root with *unug*, the cell. The brand mark is a "U" of seven cells assembling from a single accent-colored seed.
 
-The original Dhig Labs static-HTML version is preserved in `static-site/` for reference.
+The original Dhig Labs static-HTML version was removed on 2026-11-19; it remains in git history.
 
 ## Structure
 
